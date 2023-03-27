@@ -1,6 +1,4 @@
 package com.c711tjavareact.Server.security.controller;
-
-
 import com.c711tjavareact.Server.security.dto.JwtDto;
 import com.c711tjavareact.Server.security.dto.LoginUsuario;
 import com.c711tjavareact.Server.security.dto.NuevoUsuario;
@@ -29,32 +27,25 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin
 public class AuthController {
-
 	@Autowired
 	PasswordEncoder passwordEncoder;
-
 	@Autowired
 	AuthenticationManager authenticationManager;
-
 	@Autowired
 	UsuarioService usuarioService;
-
 	@Autowired
 	RolService rolService;
-
 	@Autowired
 	JwtProvider jwtProvider;
-
 	//Espera un json y lo convierte a tipo clase NuevoUsuario
-	@PostMapping("/nuevoUsuario")
+	@PostMapping("/add")
 	public ResponseEntity<?> nuevoUsuario(@Valid @RequestBody NuevoUsuario nuevoUsuario,
-										  BindingResult bindingResult){
+										  BindingResult bindingResult) {
 		if(bindingResult.hasErrors()){
 			return new ResponseEntity<>(new Mensaje("Campos mal o email invalido"), HttpStatus.BAD_REQUEST);
 		}
-		if(usuarioService.existsByUsuario(nuevoUsuario.getNombreUsuario())){
+		if(usuarioService.existsByUsuario(nuevoUsuario.getNombreUsuario() )){
 			return new ResponseEntity<>(new Mensaje("Ese nombre ya existe"), HttpStatus.BAD_REQUEST);
 		}
 		if(usuarioService.existsByEmail(nuevoUsuario.getEmail())){
@@ -65,16 +56,13 @@ public class AuthController {
 				nuevoUsuario.getEmail(), passwordEncoder.encode(nuevoUsuario.getPassword()));
 
 		Set<Rol> roles = new HashSet<>();
-		roles.add(rolService.getByRolNombre(RolNombre.ROLE_USER).get());
+		roles.add(rolService.getByRolNombre(RolNombre.ROLE_USER).orElseThrow());
 		if(nuevoUsuario.getRoles().contains("admin"))
 			roles.add(rolService.getByRolNombre(RolNombre.ROLE_ADMIN).get());
 		usuario.setRoles(roles);
-
 		usuarioService.save(usuario);
-
 		return new ResponseEntity<>(new Mensaje("Usuario creado"), HttpStatus.CREATED);
 	}
-
 	@PostMapping("/login")
 	public ResponseEntity<JwtDto> login(@Valid @RequestBody LoginUsuario loginUsuario, BindingResult bindingResult){
 		if (bindingResult.hasErrors())
