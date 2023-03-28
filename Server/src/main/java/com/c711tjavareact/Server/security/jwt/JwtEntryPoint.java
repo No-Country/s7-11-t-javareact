@@ -1,5 +1,4 @@
 package com.c711tjavareact.Server.security.jwt;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.AuthenticationException;
@@ -17,15 +16,15 @@ import java.io.IOException;
 @Component
 public class JwtEntryPoint implements AuthenticationEntryPoint {
 
-	// Implementamos un logger para ver cual metodo da error en caso de falla
-	private final static Logger logger = LoggerFactory.getLogger(JwtEntryPoint.class);
+    // Implementamos un logger para ver cual metodo da error en caso de falla
+    private final static Logger logger = LoggerFactory.getLogger(JwtEntryPoint.class);
 
-	//Metodo implementado de AuthenticationEntryPoint
-	@Override
-	public void commence(HttpServletRequest request,
-						 HttpServletResponse response,
-						 AuthenticationException authException) throws IOException, ServletException {
-		logger.error("Fallo el metodo commence");
-		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "No esta autorizado");
-	}
+    //Metodo implementado de AuthenticationEntryPoint
+    @Override
+    public void commence(HttpServletRequest request,
+                         HttpServletResponse response,
+                         AuthenticationException authException) throws IOException, ServletException {
+        logger.error("Fallo el metodo commence");
+        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "No esta autorizado");
+    }
 }

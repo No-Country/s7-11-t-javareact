@@ -5,7 +5,9 @@ import com.c711tjavareact.Server.security.enums.RolNombre;
 import com.c711tjavareact.Server.security.service.RolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CreateRoles implements CommandLineRunner {
 
 	@Autowired
