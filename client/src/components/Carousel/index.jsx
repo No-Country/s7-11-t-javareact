@@ -55,8 +55,8 @@ const Carousel = () => {
   }, [currentCategory, categoryDetails.length, intervalTime]);
 
   return (
-    <div className="carousel-container">
-      <div className="flex flex-col md:flex-row justify-center space-x-2">
+    <div className="flex px-5px">
+      <div className="flex space-x-2">
         <div className="self-center">
           <button onClick={prevCategory} className="text-2xl">
             <IoIosArrowBack />
