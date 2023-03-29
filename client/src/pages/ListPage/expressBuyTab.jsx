@@ -56,7 +56,21 @@ function ExpressTab() {
           Listo
         </button>
       </div>
+
+      <ShowExpressList selectedProducts={selectedProducts} />
     </section>
+  );
+}
+
+function ShowExpressList({ selectedProducts }) {
+  return (
+    <div>
+      {selectedProducts.map((product) => (
+        <li key={product.id} className="flex ">
+          {product.name}
+        </li>
+      ))}
+    </div>
   );
 }
 
