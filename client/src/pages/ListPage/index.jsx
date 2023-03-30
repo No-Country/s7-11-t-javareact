@@ -1,7 +1,6 @@
 import { useState } from "react";
-
-import BigBuyTab from "./bigBuyTab";
-import ExpressBuyTab from "./expressBuyTab";
+import BigBuyTab from "./BigBuyTab";
+import ExpressBuyTab from "./ExpressBuyTab";
 
 const EXPRESS_TAB_NAME = "express-buy";
 const BIG_TAB_NAME = "big-buy";
