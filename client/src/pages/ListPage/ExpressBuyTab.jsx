@@ -1,5 +1,5 @@
 import { useState } from "react";
-import NewProductForm from "./newProductForm";
+import NewProductForm from "./NewProductForm";
 
 function ExpressTab() {
   const [dailyProducts, setDailyProducts] = useState([
