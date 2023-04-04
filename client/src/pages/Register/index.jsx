@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Register = () => {
   return (
     <div
-      className="grid  min-h-screen bg-cover bg-center bg-fixed"
+      className="grid  min-h-screen bg-cover bg-center bg-fixed bg-gradient"
       style={{ backgroundColor: `white` }}
     >
       <div className="grid justify-items-center items-center h-full p-4 ">
