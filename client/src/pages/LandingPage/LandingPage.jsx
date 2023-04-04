@@ -13,7 +13,7 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 h-screen lg:bg-gray-200">
+    <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 h-screen bg-landing-page">
       <div className="flex flex-col gap-11 lg:self-start lg:h-full text-center">
         {/*  div 1 *lg:bg-gray-200 */}
         <h2 className="text-2xl font-bold pt-[5%]">Compra LISTo</h2>
