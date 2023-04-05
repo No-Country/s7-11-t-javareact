@@ -3,8 +3,15 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        'merriweather': ['Merriweather', 'serif'],
+      },
+      height: {
+        '55vh': '55vh', // definir el valor de 120 como 30rem
+      },
       colors: {
         //picton-blue
+        
         primary: {
           DEFAULT: "#38A1ED",
           50: "#ECF6FD",
