@@ -2,17 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-html{
-    @apply h-full;
+html {
+  @apply h-screen;
 }
-body{
-    height: 100%;
 
+* {
+  font-family: "Merriweather", serif;
 }
+
 .bg-gradient {
-    background-image: radial-gradient(circle, #38a1ed, #8bb5f2, #bccbf6, #e2e4fa, #ffffff);
+  background-image: radial-gradient(
+    circle,
+    #38a1ed,
+    #8bb5f2,
+    #bccbf6,
+    #e2e4fa,
+    #ffffff
+  );
 }
 
 .bg-landing-page {
-    background-image: linear-gradient(to top, #ced4d7, #abc9db, #88bde0, #63afe7, #38a1ed);
+  background-image: linear-gradient(
+    to top,
+    #ced4d7,
+    #abc9db,
+    #88bde0,
+    #63afe7,
+    #38a1ed
+  );
 }
