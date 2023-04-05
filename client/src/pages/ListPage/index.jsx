@@ -3,7 +3,7 @@ import BigBuyTab from "./BigBuyTab";
 import ExpressBuyTab from "./ExpressBuyTab";
 const EXPRESS_TAB_NAME = "express-buy";
 const BIG_TAB_NAME = "big-buy";
-import "./index.css";
+
 const ListPage = () => {
   const [activeTab, setActiveTab] = useState(EXPRESS_TAB_NAME);
 
@@ -16,7 +16,7 @@ const ListPage = () => {
       <div
         role="tablist"
         aria-label="List types Tabs"
-        className="flex items-center justify-center p-10"
+        className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,15rem),1fr))] gap-3 py-5"
       >
         <TabButton
           keyName={EXPRESS_TAB_NAME}
@@ -47,7 +47,7 @@ function TabButton({ keyName, children, changeActiveTab, activeTab }) {
     <button
       role="tab"
       aria-selected={activeTab === keyName}
-      className={` ${activeTab === keyName ? "bg-my-blue text-white border border-my-blue" : "bg-white text-black border border-my-blue"}
+      className={` ${activeTab === keyName ? "bg-primary text-white border border-primary" : "bg-white text-black border border-primary"}
               py-2 px-4 font-medium flex justify-center items-center w-168 h-29 text-sm`}
       onClick={() => changeActiveTab(keyName)}
     >
