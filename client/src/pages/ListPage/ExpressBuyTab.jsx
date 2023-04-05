@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect} from "react";
 import NewProductForm from "./NewProductForm";
 import { FaEdit } from "react-icons/fa";
 import { BiPlusCircle } from "react-icons/bi";
@@ -7,20 +7,27 @@ import { FaRegCheckCircle } from "react-icons/fa";
 import { HiXMark } from "react-icons/hi2";
 
 function ExpressTab() {
-  const [dailyProducts, setDailyProducts] = useState([
-    { id: 1, name: "Leche", checked: false, editing: false },
-    { id: 2, name: "Pan", checked: false, editing: false },
-    { id: 3, name: "Huevos", checked: false, editing: false },
-    { id: 4, name: "Apples", checked: false, editing: false },
-    { id: 5, name: "Avocado", checked: false, editing: false },
-  ]);
+  const [dailyProducts, setDailyProducts] = useState(() => {
+    const savedProducts = localStorage.getItem("dailyProducts");
+    if (savedProducts) {
+      return JSON.parse(savedProducts);
+    } else {
+      return [
+        { id: 1, name: "Leche", checked: false, editing: false },
+        { id: 2, name: "Pan", checked: false, editing: false },
+        { id: 3, name: "Huevos", checked: false, editing: false },
+        { id: 4, name: "Apples", checked: false, editing: false },
+      ];
+    }
+  });
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [formState, setFormState] = useState(false);
-  //const [editState, setEditState] = useState(false);
-  console.log(dailyProducts[0].editing);
-  console.log(dailyProducts[0].name);
   console.log(dailyProducts);
   console.log("formState:", formState);
+
+  useEffect(() => {
+    localStorage.setItem("dailyProducts", JSON.stringify(dailyProducts));
+  }, [dailyProducts]);
 
   const controlProductCheck = (id) => {
     const updatedProducts = dailyProducts.map((product) =>
@@ -57,16 +64,17 @@ function ExpressTab() {
         : product
     );
     setDailyProducts(updatedProducts);
+    
   };
 
   return (
     <section className="flex flex-col gap-10 ">
-      <ul className="list-container">
+      <ul className="h-55vh overflow-y-auto">
         {dailyProducts.map((product) => (
           <li
             key={product.id}
             className={`${
-              product.checked === true ? "select-name" : "no-select-name"
+              product.checked === true ? "bg-slate-500" : "bg-transparent"
             } flex justify-between items-center w-376 h-46 border-b-2 border-gray-300 p-5 text-lg`}
           >
             <div className="flex justify-center items-center">
@@ -74,14 +82,14 @@ function ExpressTab() {
                 <BiPlusCircle
                   onClick={() => controlProductCheck(product.id)}
                   className={`${
-                    product.checked === true ? "select-name" : "no-select-name"
-                  } text-5xl text-my-blue `}
+                    product.checked === true ? "bg-slate-500" : "bg-transparent"
+                  } text-5xl text-primary `}
                 />
               ) : (
                 <HiXMark
                   onClick={() => controlProductCheck(product.id)}
                   className={`${
-                    product.checked === true ? "select-name" : "no-select-name"
+                    product.checked === true ? "bg-slate-500" : "bg-transparent"
                   } text-5xl text-red-700 `}
                 />
               )}
@@ -89,7 +97,7 @@ function ExpressTab() {
               {product.editing ? (
                 <input
                   type="text"
-                  className="ml-2"
+                  className="ml-2 bg-slate-300"
                   value={product.name}
                   onChange={(e) =>
                     handleEditProduct(
@@ -113,20 +121,20 @@ function ExpressTab() {
                   handleEditProduct(product.id, product.name, true);
                 }}
                 className={`${
-                  product.editing ? "none" : "show"
-                } text-3xl text-orange-600`}
+                  product.editing ? "hidden" : "block"
+                } text-3xl text-orange-600 `}
               />
               <FaRegCheckCircle
                 onClick={() => {
                   handleEditProduct(product.id, product.name, false);
                 }}
                 className={`${
-                  product.editing === true ? "show" : "none"
+                  product.editing === true ? "block" : "hidden"
                 } text-3xl text-green-600`}
               />
               <FaTrashAlt
                 className={`${
-                  product.editing === true ? "show" : "none"
+                  product.editing === true ? "block" : "hidden"
                 } text-3xl text-red-600`}
                 onClick={() => handleDeleteProduct(product.id)}
               />
@@ -142,13 +150,13 @@ function ExpressTab() {
       >
         <BiPlusCircle
           className={`${
-            formState === true ? "desactivatedForm flex" : "activeForm"
-          } text-5xl text-my-blue `}
+            formState === true ? "hidden" : "block"
+          } text-5xl text-primary `}
         />
       </div>
       <div
  className={`${
-  formState === true ? "activeForm flex" : "desactivatedForm hidden" 
+  formState === true ? "block" : "hidden" 
 } flex flex-col justify-center items-center gap-3 px-2`}
       >
         <NewProductForm addProduct={addProductClick} />
@@ -170,7 +178,7 @@ function ShowExpressList({ selectedProducts }) {
   return (
     <div>
       {selectedProducts.map((product) => (
-        <li key={product.id} className="flex ">
+        <li key={product.id} className="flex">
           {product.name}
         </li>
       ))}
