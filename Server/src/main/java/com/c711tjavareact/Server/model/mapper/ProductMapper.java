@@ -3,7 +3,9 @@ package com.c711tjavareact.Server.model.mapper;
 import com.c711tjavareact.Server.model.dto.request.ProductRequestDto;
 import com.c711tjavareact.Server.model.dto.response.ProductResponseDto;
 import com.c711tjavareact.Server.model.entity.Product;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ProductMapper {
 
     public Product entityToDto(ProductRequestDto Request){
