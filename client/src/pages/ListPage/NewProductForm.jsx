@@ -13,7 +13,7 @@ function NewProductForm({ addProduct }) {
     setNewProductName("");
   };
   return (
-    <form className="flex" onSubmit={handleSubmit}>
+    <form className="flex items-center justify-center w-full" onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Agregar nuevo product"

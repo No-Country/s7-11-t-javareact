@@ -3,9 +3,12 @@
 @tailwind utilities;
 
 html{
-    @apply h-screen;
+    @apply h-full;
 }
+body{
+    height: 100%;
 
+}
 .bg-gradient {
     background-image: radial-gradient(circle, #38a1ed, #8bb5f2, #bccbf6, #e2e4fa, #ffffff);
 }
