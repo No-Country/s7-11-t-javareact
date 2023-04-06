@@ -27,7 +27,7 @@ const Carousel = () => {
     {
       img: 'https://i.postimg.cc/2STDzKtB/familia.jpg',
       category: 'Agrega tus compas del hogar',
-      categoryDescription: 'Compras rápidas o grandes, guardalas en un solo lugar',
+      categoryDescription: 'Compras grandes o rápidas, guardalas en un solo lugar',
     },
     {
       img: 'https://i.postimg.cc/PJF3q0D2/fam.jpg',
