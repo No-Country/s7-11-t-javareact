@@ -1,5 +1,8 @@
-import { useState,useEffect} from "react";
+import { useState, useEffect } from "react";
 import NewProductForm from "./NewProductForm";
+import { FaEdit, FaRegCheckCircle, FaTrashAlt } from "react-icons/fa";
+import { BiPlusCircle } from "react-icons/bi";
+import { HiXMark } from "react-icons/hi2";
 
 function ExpressTab() {
   const [dailyProducts, setDailyProducts] = useState(() => {
@@ -46,11 +49,12 @@ function ExpressTab() {
   };
 
   const handleDeleteProduct = (productId) => {
-    const updatedProducts = dailyProducts.filter(product => product.id !== productId);
+    const updatedProducts = dailyProducts.filter(
+      (product) => product.id !== productId
+    );
     setDailyProducts(updatedProducts);
-  }
-  
-  
+  };
+
   const handleEditProduct = (id, editedName, state) => {
     const updatedProducts = dailyProducts.map((product) =>
       product.id === id
@@ -58,7 +62,6 @@ function ExpressTab() {
         : product
     );
     setDailyProducts(updatedProducts);
-    
   };
 
   return (
@@ -149,9 +152,9 @@ function ExpressTab() {
         />
       </div>
       <div
- className={`${
-  formState === true ? "block" : "hidden" 
-} flex flex-col justify-center items-center gap-3 px-2`}
+        className={`${
+          formState === true ? "block" : "hidden"
+        } flex flex-col justify-center items-center gap-3 px-2`}
       >
         <NewProductForm addProduct={addProductClick} />
         <div className="">

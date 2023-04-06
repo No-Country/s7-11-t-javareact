@@ -7,14 +7,21 @@ const Login = ({ setIsAuthenticated, paddingTop }) => {
   const controlHomeClick = () => {
     navigate("/home");
   };
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = (data) => {
-    if (data.userName === "user@example.com" && data.password === "password123") {
+    if (
+      data.userName === "user@example.com" &&
+      data.password === "password123"
+    ) {
       setIsAuthenticated(true);
     }
   };
-  
+
   const ValidateLogin = () => {
     if (userName === "user@example.com" && password === "password123") {
       setIsAuthenticated(true);
@@ -29,7 +36,10 @@ const Login = ({ setIsAuthenticated, paddingTop }) => {
     >
       <div className="grid justify-items-center w-full lg:max-w-md  max-w-sm px-[4%] min-w-[321px]:px-8 py-10 rounded-lg shadow-lg border border-gray-200 bg-gray-100">
         <h1 className="text-2xl font-bold mb-4 text-center">Iniciar sesión</h1>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full px-[6%] lg:px-[10%]">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-4 w-full px-[6%] lg:px-[10%]"
+        >
           <div>
             <label
               className="block text-gray-700 font-bold mb-2"
@@ -38,13 +48,17 @@ const Login = ({ setIsAuthenticated, paddingTop }) => {
               Nombre de usuario
             </label>
             <input
-              className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.userName && 'border-red-500'}`} 
+              className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                errors.userName && "border-red-500"
+              }`}
               id="username"
               type="text"
               placeholder="Nombre de usuario"
               {...register("userName", { required: true })}
             />
-            {errors.userName && <span className="text-red-500">Este campo es requerido</span>}
+            {errors.userName && (
+              <span className="text-red-500">Este campo es requerido</span>
+            )}
           </div>
           <div>
             <label
@@ -54,14 +68,17 @@ const Login = ({ setIsAuthenticated, paddingTop }) => {
               Contraseña
             </label>
             <input
-              className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.password && 'border-red-500'}`}
+              className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                errors.password && "border-red-500"
+              }`}
               id="password"
-              value={password}
               {...register("password", { required: true })}
               type="password"
               placeholder="Contraseña"
             />
-             {errors.password && <span className="text-red-500">Este campo es requerido</span>}
+            {errors.password && (
+              <span className="text-red-500">Este campo es requerido</span>
+            )}
           </div>
           <div className="grid justify-items-center">
             <button
