@@ -1,6 +1,8 @@
 import { useState } from "react";
 import BigBuyTab from "./BigBuyTab";
 import ExpressBuyTab from "./ExpressBuyTab";
+import NavBar from "@/layouts/NavBar";
+import GoBack from "@/layouts/GoBack";
 
 const EXPRESS_TAB_NAME = "express-buy";
 const BIG_TAB_NAME = "big-buy";
@@ -15,6 +17,8 @@ const ListPage = () => {
 
   return (
     <main className="w-11/12 max-w-7xl mx-auto ">
+      <NavBar/>
+      <GoBack />
       <div
         role="tablist"
         aria-label="List types Tabs"
