@@ -41,4 +41,9 @@ public class ProductMapper {
         return product;
     }
 
+    public Product updateSoftDelete(Product entity, boolean status){
+        entity.setStatus(status);
+        return entity;
+    }
+
 }
