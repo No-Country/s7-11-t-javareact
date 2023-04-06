@@ -20,32 +20,32 @@ const Carousel = () => {
 
   const categoryDetails = [
     {
-      img: "https://source.unsplash.com/m75zUxR",
-      category: "lorem1",
-      categoryDescription: "Nullam nec eros euismod, dignissim eros a, bibendum ex.",
+      img: 'https://i.postimg.cc/7ZFVdHHH/3887312-11697.jpg',
+      category: 'Ordene todas sus compras en un solo lugar',
+      categoryDescription: 'Agrega listas y ordena tus compras rápido y fácil',
     },
     {
-      img: "https://source.unsplash.com/l2Qk0zk",
-      category: "lorem2",
-      categoryDescription: "Nunc id elit consequat, mattis justo in, faucibus arcu.",
+      img: 'https://i.postimg.cc/2STDzKtB/familia.jpg',
+      category: 'Agrega tus compas del hogar',
+      categoryDescription: 'Compras rápidas o grandes, guardalas en un solo lugar',
     },
     {
-      img: "https://source.unsplash.com/dwgcA1I",
-      category: "lorem3",
-      categoryDescription: "Suspendisse sit amet turpis volutpat, gravida ex a",
+      img: 'https://i.postimg.cc/PJF3q0D2/fam.jpg',
+      category: 'Edita, crea y elimina productos',
+      categoryDescription: 'Puedes actualizar tu lista cuantas veces desees',
     },
     {
-      img: "https://source.unsplash.com/Cvn1kyH",
-      category: "lorem4",
-      categoryDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      img: 'https://i.postimg.cc/L687t36z/mujer.jpg',
+      category: 'Controla tu presupuesto de tus compras',
+      categoryDescription: 'Cuentas claras y rápidas para tus presupuestos',
     },
     {
-      img: "https://source.unsplash.com/4xuxzZC",
-      category: "lorem5",
-      categoryDescription: "Pellentesque habitant morbi tristique senectus et netus et",
+      img: 'https://i.postimg.cc/Sx8yX1bx/pareja.jpg',
+      category: 'Comparte la lista de tus compras',
+      categoryDescription: 'Con las personas que desees, fácil y rápido',
     },
-  ];
-  
+  ]
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentCategory((currentCategory + 1) % categoryDetails.length);
