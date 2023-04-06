@@ -32,9 +32,9 @@ const Login = ({ setIsAuthenticated, paddingTop }) => {
 
   return (
     <div
-      className={`grid justify-items-center items-center h-full max-[1000px]:h-screen p-4 ${dynamicClass}`}
+      className={`grid justify-items-center items-center h-full pt-[10%] max-[1000px]:h-screen p-4 ${dynamicClass}`}
     >
-      <div className="grid justify-items-center w-full lg:max-w-md  max-w-sm px-[4%] min-w-[321px]:px-[7%] py-7 rounded-lg shadow-lg border border-gray-200 bg-gray-100">
+      <div className="grid justify-items-center w-full lg:max-w-md  max-w-sm px-[4%] min-w-[321px]:px-8 py-10 rounded-lg shadow-lg border border-gray-200 bg-gray-100">
         <h1 className="text-2xl font-bold mb-4 text-center">Iniciar sesión</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}

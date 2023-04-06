@@ -1,25 +1,23 @@
-/*Lato from Adobe*/
-@import url("https://use.typekit.net/cei3zmb.css");
-
-/* Poppins */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-#root {
-  @apply min-h-full;
+html {
+  @apply h-screen;
 }
 
+* {
+  font-family: "Merriweather", serif;
+}
 
 .bg-gradient {
-  background: rgb(178, 249, 255);
-  background: linear-gradient(
-    90deg,
-    rgba(178, 249, 255, 1) 0%,
-    rgba(56, 161, 237, 0.7959558823529411) 50%,
-    rgba(104, 255, 162, 0.4962359943977591) 100%
+  background-image: radial-gradient(
+    circle,
+    #38a1ed,
+    #8bb5f2,
+    #bccbf6,
+    #e2e4fa,
+    #ffffff
   );
 }
 
