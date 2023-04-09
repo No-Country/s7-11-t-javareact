@@ -21,7 +21,7 @@ const Carousel = () => {
   const categoryDetails = [
     {
       img: 'https://i.postimg.cc/7ZFVdHHH/3887312-11697.jpg',
-      category: 'Ordene todas sus compras en un solo lugar',
+      category: 'Ordena tus compras en un solo lugar',
       categoryDescription: 'Agrega listas y ordena tus compras rápido y fácil',
     },
     {
@@ -31,18 +31,18 @@ const Carousel = () => {
     },
     {
       img: 'https://i.postimg.cc/PJF3q0D2/fam.jpg',
-      category: 'Edita, crea y elimina productos',
-      categoryDescription: 'Puedes actualizar tu lista cuantas veces desees',
+      category: 'Edita, crea y elimina tus compras',
+      categoryDescription: 'Actualiza tus lista cuantas veces desees en cualquier lugar',
     },
     {
       img: 'https://i.postimg.cc/L687t36z/mujer.jpg',
       category: 'Controla tu presupuesto de tus compras',
-      categoryDescription: 'Cuentas claras y rápidas para tus presupuestos',
+      categoryDescription: '¡Cuentas claras y rápidas para tus presupuestos en una sola app!',
     },
     {
       img: 'https://i.postimg.cc/Sx8yX1bx/pareja.jpg',
       category: 'Comparte la lista de tus compras',
-      categoryDescription: 'Con las personas que desees, fácil y rápido',
+      categoryDescription: 'Con las personas que desees, fácil y rápido. ¡Todo en uno!',
     },
   ]
 
