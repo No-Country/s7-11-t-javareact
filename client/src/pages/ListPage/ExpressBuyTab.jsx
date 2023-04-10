@@ -72,7 +72,7 @@ function ExpressTab() {
             key={product.id}
             className={`${
               product.checked === true ? "bg-slate-500" : "bg-transparent"
-            } flex justify-between items-center w-376 h-46 border-b-2 border-gray-300 p-5 text-lg`}
+            } flex justify-between items-center w-376 h-46 border-b-2 border-gray-300 p-5 text-lg active:bg-[#ACC0DF] cursor-pointer`}
           >
             <div className="flex justify-center items-center">
               {product.checked == false ? (
@@ -94,7 +94,7 @@ function ExpressTab() {
               {product.editing ? (
                 <input
                   type="text"
-                  className="ml-2 bg-slate-300"
+                  className="ml-2 w-full bg-transparent"
                   value={product.name}
                   onChange={(e) =>
                     handleEditProduct(
@@ -132,38 +132,40 @@ function ExpressTab() {
               <FaTrashAlt
                 className={`${
                   product.editing === true ? "block" : "hidden"
-                } text-3xl text-red-600`}
+                } text-3xl text-white bg-red-600 cursor-pointer p-2 rounded-lg`}
                 onClick={() => handleDeleteProduct(product.id)}
               />
             </div>
           </li>
         ))}
       </ul>{" "}
-      <div
-        onClick={() => {
-          setFormState(true);
-        }}
-        className="flex w-full h-auto items-center justify-center"
-      >
-        <BiPlusCircle
+      <div className='relative'>
+        <div
+          onClick={() => {
+            setFormState(true);
+          }}
+          className="flex w-full h-auto items-center justify-center"
+        >
+          <BiPlusCircle
+            className={`${
+              formState === true ? "hidden" : "block"
+            } text-5xl text-primary `}
+          />
+        </div>
+        <div
           className={`${
-            formState === true ? "hidden" : "block"
-          } text-5xl text-primary `}
-        />
-      </div>
-      <div
-        className={`${
-          formState === true ? "block" : "hidden"
-        } flex flex-col justify-center items-center gap-3 px-2`}
-      >
-        <NewProductForm addProduct={addProductClick} />
-        <div className="">
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded-md"
-            onClick={controlDoneClick}
-          >
-            Listo
-          </button>
+            formState === true ? "block" : "hidden"
+          } flex flex-col justify-center items-center gap-3 px-2 absolute w-full`}
+        >
+          <NewProductForm addProduct={addProductClick} />
+          <div className="">
+            <button
+              className="bg-blue-500 text-white px-4 py-2 rounded-md"
+              onClick={controlDoneClick}
+            >
+              Listo
+            </button>
+          </div>
         </div>
       </div>
       <ShowExpressList selectedProducts={selectedProducts} />

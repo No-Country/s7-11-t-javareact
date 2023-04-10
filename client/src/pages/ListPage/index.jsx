@@ -22,7 +22,7 @@ const ListPage = () => {
       <div
         role="tablist"
         aria-label="List types Tabs"
-        className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,15rem),1fr))] gap-3 py-5"
+        className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,15rem),1fr))] py-5"
       >
         <TabButton
           keyName={EXPRESS_TAB_NAME}
