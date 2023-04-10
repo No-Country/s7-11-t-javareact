@@ -17,7 +17,6 @@ public class ProductRequestDto implements Serializable {
   private final float price;
   private final int quantity;
   private final int discount;
-  private final boolean status;
   private final Category category;
   private final List<Requirement> requirementList;
 }

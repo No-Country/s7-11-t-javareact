@@ -23,7 +23,6 @@ public class ProductResponseDto implements Serializable {
   private float price;
   private int quantity;
   private int discount;
-  private boolean status;
   private Category category;
   private List<Requirement> requirementList;
 }
