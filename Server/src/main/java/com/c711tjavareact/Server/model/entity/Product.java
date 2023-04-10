@@ -32,14 +32,14 @@ public class Product {
     private int discount;
 
     @Column(name = "status")
-    private boolean status;
+    private boolean status = true;
 
     @ManyToOne(fetch = EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id")
     private Category category;
 
+/*
     @ManyToMany(mappedBy = "productList")
     private  List<Requirement> requirementList;
-
-
+*/
 }
