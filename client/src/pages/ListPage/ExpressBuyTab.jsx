@@ -3,7 +3,8 @@ import NewProductForm from "./NewProductForm";
 import { FaEdit, FaRegCheckCircle, FaTrashAlt } from "react-icons/fa";
 import { BiPlusCircle } from "react-icons/bi";
 import { HiXMark } from "react-icons/hi2";
-
+import { useRef } from "react";
+import { MdShoppingCart } from "react-icons/md";
 function ExpressTab() {
   const [dailyProducts, setDailyProducts] = useState(() => {
     const savedProducts = localStorage.getItem("dailyProducts");
@@ -18,20 +19,57 @@ function ExpressTab() {
       ];
     }
   });
+  const inputRef = useRef(null);
+  const [stateSelectItem, setStateSelectItem] = useState(() => {
+    const storedState = localStorage.getItem("selectItemState");
+    return storedState ? JSON.parse(storedState) : [];
+  });
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [formState, setFormState] = useState(false);
-  console.log(dailyProducts);
-  console.log("formState:", formState);
 
   useEffect(() => {
     localStorage.setItem("dailyProducts", JSON.stringify(dailyProducts));
   }, [dailyProducts]);
 
-  const controlProductCheck = (id) => {
+  const controlProductCheck = (id, state) => {
     const updatedProducts = dailyProducts.map((product) =>
-      product.id === id ? { ...product, checked: !product.checked } : product
+      product.id === id ? { ...product, checked: state } : product
     );
     setDailyProducts(updatedProducts);
+  };
+
+  const addSelectItem = (id) => {
+    const selectItem = dailyProducts.find((product) => product.id === id);
+    if (selectItem) {
+      setStateSelectItem((prevState) => {
+        const existingItemIndex = prevState.findIndex((item) => item.id === id);
+        if (existingItemIndex !== -1) {
+          const updatedItem = {
+            ...prevState[existingItemIndex],
+            quantity:
+              prevState[existingItemIndex].quantity +
+              (selectItem.quantity || 1),
+          };
+          const newState = [
+            ...prevState.slice(0, existingItemIndex),
+            updatedItem,
+            ...prevState.slice(existingItemIndex + 1),
+          ];
+          localStorage.setItem("selectItemState", JSON.stringify(newState));
+          return newState;
+        } else {
+          const newState = [...prevState, { ...selectItem, quantity: 1 }];
+          localStorage.setItem("selectItemState", JSON.stringify(newState));
+          return newState;
+        }
+      });
+    }
+  };
+
+  const removeSelectItem = (id) => {
+    setStateSelectItem((prevState) => {
+      return prevState.filter((item) => item.id !== id);
+    });
   };
 
   const controlDoneClick = () => {
@@ -59,42 +97,44 @@ function ExpressTab() {
     const updatedProducts = dailyProducts.map((product) =>
       product.id === id
         ? { ...product, name: editedName, editing: state }
-        : product
+        : { ...product, editing: false }
     );
     setDailyProducts(updatedProducts);
   };
 
   return (
-    <section className="flex flex-col gap-10 ">
-      <ul className="h-55vh overflow-y-auto">
+    <section className="flex flex-col gap-5 justify-between ">
+      <ul className="h-72 overflow-y-auto">
         {dailyProducts.map((product) => (
           <li
             key={product.id}
             className={`${
               product.checked === true ? "bg-slate-500" : "bg-transparent"
-            } flex justify-between items-center w-376 h-46 border-b-2 border-gray-300 p-5 text-lg active:bg-[#ACC0DF] cursor-pointer`}
+            } flex justify-between items-center w-376 h-46 border-b-2 border-gray-300 p-5 text-lg`}
           >
             <div className="flex justify-center items-center">
               {product.checked == false ? (
                 <BiPlusCircle
-                  onClick={() => controlProductCheck(product.id)}
+                  onClick={() => addSelectItem(product.id)}
                   className={`${
                     product.checked === true ? "bg-slate-500" : "bg-transparent"
-                  } text-5xl text-primary `}
+                  } text-2xl text-primary cursor-pointer`}
                 />
               ) : (
                 <HiXMark
-                  onClick={() => controlProductCheck(product.id)}
+                  input
+                  onClick={() => controlProductCheck(product.id, false)}
                   className={`${
                     product.checked === true ? "bg-slate-500" : "bg-transparent"
-                  } text-5xl text-red-700 `}
+                  } text-2xl text-red-700 cursor-pointer`}
                 />
               )}
 
               {product.editing ? (
                 <input
+                  autoFocus="autofocus"
                   type="text"
-                  className="ml-2 w-full bg-transparent"
+                  className="ml-2 w-full animate-blink bg-transparent rounded-md"
                   value={product.name}
                   onChange={(e) =>
                     handleEditProduct(
@@ -103,23 +143,38 @@ function ExpressTab() {
                       product.editing
                     )
                   }
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      handleEditProduct(
+                        product.id,
+                        e.target.value,
+                        product.editing
+                      );
+                      inputRef.current.blur();
+                    }
+                  }}
+                  ref={inputRef}
                 />
               ) : (
-                <div className="flex gap-5 items-center justify-center">
-                  <label htmlFor={product.id} className="ml-2">
+                <div
+                  onClick={() => controlProductCheck(product.id, true)}
+                  className="w-64 flex gap-5 items-center justify-start "
+                >
+                  <label htmlFor={product.id} className=" ml-2">
                     {product.name}
                   </label>
                 </div>
               )}
             </div>
-            <div className="flex gap-5">
+            <div className="flex gap-1">
               <FaEdit
                 onClick={() => {
                   handleEditProduct(product.id, product.name, true);
                 }}
                 className={`${
                   product.editing ? "hidden" : "block"
-                } text-3xl text-orange-600 `}
+                } text-2xl text-orange-600 cursor-pointer`}
               />
               <FaRegCheckCircle
                 onClick={() => {
@@ -127,19 +182,19 @@ function ExpressTab() {
                 }}
                 className={`${
                   product.editing === true ? "block" : "hidden"
-                } text-3xl text-green-600`}
+                } text-2xl text-green-600 cursor-pointer`}
               />
               <FaTrashAlt
                 className={`${
                   product.editing === true ? "block" : "hidden"
-                } text-3xl text-white bg-red-600 cursor-pointer p-2 rounded-lg`}
+                } text-2xl text-white bg-red-600 cursor-pointer p-2 rounded-lg `}
                 onClick={() => handleDeleteProduct(product.id)}
               />
             </div>
           </li>
         ))}
-      </ul>{" "}
-      <div className='relative'>
+      </ul>
+      <div className="relative">
         <div
           onClick={() => {
             setFormState(true);
@@ -149,16 +204,16 @@ function ExpressTab() {
           <BiPlusCircle
             className={`${
               formState === true ? "hidden" : "block"
-            } text-5xl text-primary `}
+            } text-5xl text-primary h-20`}
           />
         </div>
         <div
           className={`${
             formState === true ? "block" : "hidden"
-          } flex flex-col justify-center items-center gap-3 px-2 absolute w-full`}
+          } flex flex-col justify-center items-center gap-3 px-2 w-full h-20`}
         >
           <NewProductForm addProduct={addProductClick} />
-          <div className="">
+          <div>
             <button
               className="bg-blue-500 text-white px-4 py-2 rounded-md"
               onClick={controlDoneClick}
@@ -168,6 +223,28 @@ function ExpressTab() {
           </div>
         </div>
       </div>
+      <ul className="w-full h-40 border border-b-2 border-gray-400 rounded-md overflow-x-hidden overflow-y-auto grid grid-cols-[3,1fr,auto] items-stretch gap-2 ">
+        {stateSelectItem.map((product) => (
+          <li
+            key={product.id}
+            className="w-full flex justify-between px-2 py-1"
+          >
+            <div className="w-72 flex gap-1 justify-start items-center border-r-2 border-black">
+              <div className="bg-primary-300 p-2">
+                <MdShoppingCart />
+              </div>
+              <div>{product.name}</div>
+            </div>
+            <div className="w-full flex justify-end items-center gap-2 bg-[#ecf6fd]">
+              <div>{product.quantity}x</div>
+              <HiXMark
+                onClick={() => removeSelectItem(product.id)}
+                className="text-2xl text-white bg-red-600 cursor-pointer border border-red hover:bg-white hover:text-red-500"
+              />
+            </div>
+          </li>
+        ))}
+      </ul>
       <ShowExpressList selectedProducts={selectedProducts} />
     </section>
   );
