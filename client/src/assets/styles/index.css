@@ -1,3 +1,35 @@
+/*Lato from Adobe*/
+@import url("https://use.typekit.net/cei3zmb.css");
+
+/* Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#root {
+  @apply min-h-full;
+}
+
+
+.bg-gradient {
+  background: rgb(178, 249, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(178, 249, 255, 1) 0%,
+    rgba(56, 161, 237, 0.7959558823529411) 50%,
+    rgba(104, 255, 162, 0.4962359943977591) 100%
+  );
+}
+
+.bg-landing-page {
+  background-image: linear-gradient(
+    to top,
+    #ced4d7,
+    #abc9db,
+    #88bde0,
+    #63afe7,
+    #38a1ed
+  );
+}
