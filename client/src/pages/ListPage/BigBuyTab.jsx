@@ -92,7 +92,7 @@ const BigBuyTab = () => {
   return (
     <main className="">
       <section className="flex flex-col gap-8 w-full">
-        <div className="bg-gray-100 rounded-md p-4 ">
+        <div className="rounded-md p-4 ">
           <select
             className="w-full border border-gray-300 rounded-md py-2 px-4"
             value={selectedCategory}

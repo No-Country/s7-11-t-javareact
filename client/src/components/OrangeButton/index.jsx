@@ -1,6 +1,6 @@
 import React from "react"
 
-const LightBlueButton = ({ text, type, onClick, className }) => {
+const OrangeButton = ({ text, type, onClick, className }) => {
   const handleClick = () => {
     if (onClick) {
       onClick(onClick)
@@ -10,13 +10,14 @@ const LightBlueButton = ({ text, type, onClick, className }) => {
     <div className={className}>
       <button
         type={type}
-        className="w-full self-center font-button text-button bg-[#38A1ED] py-3 rounded-lg text-gray-50"
+        className="w-full self-center font-button text-button bg-orange-400 py-3 rounded-lg text-gray-50"
         onClick={handleClick}
-      >
+      > 
+      {/* bg-[#38A1ED] */}
         {text}
       </button>
     </div>
   )
 }
 
-export default LightBlueButton
+export default OrangeButton
