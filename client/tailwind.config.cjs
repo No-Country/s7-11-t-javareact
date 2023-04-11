@@ -13,7 +13,7 @@ module.exports = {
         //picton-blue
         
         primary: {
-          DEFAULT: "#38A1ED",
+          DEFAULT: "#FB923C",
           50: "#ECF6FD",
           100: "#DCEEFC",
           200: "#BBDFF9",
