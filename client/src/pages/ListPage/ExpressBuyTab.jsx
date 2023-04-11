@@ -75,7 +75,7 @@ function ExpressTab() {
   const controlDoneClick = () => {
     const selected = dailyProducts.filter((product) => product.checked);
     setSelectedProducts(selected);
-    console.log(selected);
+    setFormState(false)
   };
 
   const addProductClick = (productName) => {
@@ -245,21 +245,11 @@ function ExpressTab() {
           </li>
         ))}
       </ul>
-      <ShowExpressList selectedProducts={selectedProducts} />
+     
     </section>
   );
 }
 
-function ShowExpressList({ selectedProducts }) {
-  return (
-    <div>
-      {selectedProducts.map((product) => (
-        <li key={product.id} className="flex">
-          {product.name}
-        </li>
-      ))}
-    </div>
-  );
-}
+
 
 export default ExpressTab;
