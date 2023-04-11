@@ -23,6 +23,9 @@ public class Category {
     @NotBlank(message = "Not Empty")
     private String name;
 
+    @Column(name = "status")
+    private boolean status = true;
+
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "category")
     @JsonIgnoreProperties("category")
     private List<Product> products = new ArrayList<>();
