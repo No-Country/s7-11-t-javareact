@@ -5,6 +5,7 @@ import LandingPage from "@/pages/LandingPage/LandingPage";
 import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 import Home from "@/pages/Home";
 import ListPage from "@/pages/ListPage";
+import GeneratedListPage from "@/pages/GeneratedList";
 
 const AppRoutes = ({ isAuthenticated }) => {
   return (
@@ -15,6 +16,7 @@ const AppRoutes = ({ isAuthenticated }) => {
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home />} />
         <Route path="/list" element={<ListPage />} />
+        <Route path="/list/:id" element={<GeneratedListPage />} />
 
         {/* <PrivateRoutes
         path="/Home"
