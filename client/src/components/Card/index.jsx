@@ -1,14 +1,10 @@
 
-const Card = ({ imageSide = "left", image, service, paragraph }) => {
-  if (!["left", "right"].includes(imageSide))
-    throw new Error("Invalid imageSide prop")
-
-  const flexDirection = imageSide === "left" ? "flex-row" : "flex-row-reverse"
+const Card = ({image, service, paragraph }) => {
 
   return (
     <div className="flex flex-col max-w-[22rem]">
       <div
-        className={`flex flex-col justify-center p-[2%] max-270px]:h-[9.5rem] min-270px]:h-[9rem] bg-gray-50 drop-shadow-md rounded-2xl ${flexDirection} text-center text-neutral-900`}
+        className={`flex flex-col justify-center p-[2%] max-270px]:h-[9.5rem] min-270px]:h-[9rem] bg-gray-50 drop-shadow-md rounded-2xl text-center text-neutral-900`}
       >
         <div className="pl-[3%] justify-self-center self-center w-auto h-[7rem] max-[270px]:h-[6rem] flex-initial max-w-sm rounded-full flex-shrink-0">
           <img

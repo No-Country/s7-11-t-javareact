@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-html{
-    @apply h-screen;
+html {
+  @apply h-screen;
+}
+
+* {
+  font-family: "Merriweather", serif;
+}
+
+.bg-gradient {
+  background-image: radial-gradient(
+    circle,
+    #38a1ed,
+    #8bb5f2,
+    #bccbf6,
+    #e2e4fa,
+    #ffffff
+  );
+}
+
+.bg-landing-page {
+  background-image: linear-gradient(
+    to top,
+    #ced4d7,
+    #abc9db,
+    #88bde0,
+    #63afe7,
+    #38a1ed
+  );
 }
