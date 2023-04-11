@@ -23,13 +23,22 @@
   );
 }
 
-.bg-landing-page {
-  background-image: linear-gradient(
-    to top,
-    #ced4d7,
-    #abc9db,
-    #88bde0,
-    #63afe7,
-    #38a1ed
-  );
+/* Animaciones */
+.btn-line {
+  background-color: black;
+  transition: all 0.5s ease-in-out;
+}
+
+.open .btn-line:nth-child(1) {
+  transform: rotate(40deg);
+  top: 11px;
+}
+
+.open .btn-line:nth-child(2) {
+  opacity: 0;
+}
+
+.open .btn-line:nth-child(3) {
+  transform: rotate(-40deg);
+  top: -11px;
 }
