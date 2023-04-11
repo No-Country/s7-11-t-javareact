@@ -4,18 +4,17 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const Carousel = () => {
   const [currentCategory, setCurrentCategory] = useState(0);
-  const [intervalTime, setIntervalTime] = useState(2000); // Intervalo de tiempo por defecto: 2 segundos
-
+  const [intervalTime, setIntervalTime] = useState(5000); 
   const nextCategory = () => {
     setCurrentCategory((currentCategory + 1) % categoryDetails.length);
-    setIntervalTime(60000); // Cambia el intervalo de tiempo a 1 minuto después de hacer clic en "siguiente"
+    setIntervalTime(60000); 
   };
 
   const prevCategory = () => {
     setCurrentCategory(
       (currentCategory + categoryDetails.length - 1) % categoryDetails.length
     );
-    setIntervalTime(60000); // Cambia el intervalo de tiempo a 1 minuto después de hacer clic en "anterior"
+    setIntervalTime(60000); 
   };
 
   const categoryDetails = [
@@ -55,8 +54,8 @@ const Carousel = () => {
   }, [currentCategory, categoryDetails.length, intervalTime]);
 
   return (
-    <div className="flex px-5px">
-      <div className="flex space-x-2">
+    <div className="flex px-5 lg:w-full lg:h-full">
+      <div className="flex space-x-2 m-auto lg:h-full">
         <div className="self-center">
           <button onClick={prevCategory} className="text-2xl">
             <IoIosArrowBack />
