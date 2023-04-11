@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { MdAdd, MdShoppingCart, MdCheckCircle, MdEdit } from "react-icons/md";
+import { MdAdd, MdDelete } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+
+import ProductListItem from "@/components/ProductListItem";
 
 const CATEGORIES_DATA = [
   {
@@ -48,6 +51,7 @@ const groupProductsByCategory = (productsList) =>
   Object.entries(groupBy(productsList, "category"));
 
 const BigBuyTab = () => {
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("");
   const [productsList, setProductsList] = useState([]);
 
@@ -74,9 +78,10 @@ const BigBuyTab = () => {
     );
 
   const controlGenerateList = () => {
-    const list = generatedList(products);
-    console.log(list);
+    // const list = generatedList(products);
+    console.log(productsList);
     // aquí se puede enviar la lista a un servidor o mostrarla en una ventana emergente.
+    navigate("/list/2");
   };
 
   const generatedList = (products) => {
@@ -127,10 +132,19 @@ const BigBuyTab = () => {
               <ul className="flex flex-col gap-2">
                 {products.map((product, index) => (
                   <ProductListItem
-                    product={product}
                     key={product.id}
-                    toggleProductDone={toggleProductDone}
-                  />
+                    product={product}
+                    endAdornment={
+                      <button
+                        className="bg-red-400 px-5 grid place-items-center text-xl"
+                        title="delete product"
+                      >
+                        <MdDelete />
+                      </button>
+                    }
+                  >
+                    <span className="my-2">{product.cuantity}</span>
+                  </ProductListItem>
                 ))}
               </ul>
             </div>
@@ -141,61 +155,11 @@ const BigBuyTab = () => {
           className="bg-green-500 text-white px-4 py-2 rounded-md "
           onClick={controlGenerateList}
         >
-          Listo
+          Generar Lista
         </button>
       </section>
     </main>
   );
 };
-
-function ProductListItem({ product, toggleProductDone }) {
-  const { name, cuantity, price, done } = product;
-  return (
-    <li className="flex flex-row">
-      <div
-        role="checkbox"
-        aria-checked={done}
-        tabIndex="0"
-        onKeyDown={(event) => {
-          if (event.code == "Enter" || event.code == "Space")
-            toggleProductDone(product);
-        }}
-        onClick={() => toggleProductDone(product)}
-        className={`${done ? "border-primary-50" : "border-primary-400"}
-         border-l-8 cursor-pointer grid grid-cols-[auto,1fr,auto] items-stretch flex-grow`}
-      >
-        {done ? (
-          <MdCheckCircle className="mx-3 my-auto text-xl text-emerald-500" />
-        ) : (
-          <MdShoppingCart className="mx-3 my-auto text-xl" />
-        )}
-        <div
-          className={`py-1 px-2 w-full rounded-l-lg flex flex-row flex-wrap justify-between
-        ${done ? "bg-gray-50" : "bg-primary-50"}`}
-        >
-          <h4
-            className={`${
-              done ? "line-through decoration-red-600" : ""
-            } my-auto`}
-          >
-            {name}
-          </h4>
-          <div className="flex flex-col gap-1 text-sm ">
-            <span className=" underline">
-              {cuantity} x ${price}
-            </span>
-            <span className=" text-gray-700 ">${cuantity * price}</span>
-          </div>
-        </div>
-      </div>
-      <button
-        className="bg-amber-300 px-5 grid place-items-center text-xl"
-        title="edit product"
-      >
-        <MdEdit />
-      </button>
-    </li>
-  );
-}
 
 export default BigBuyTab;
