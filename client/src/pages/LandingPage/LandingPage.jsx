@@ -1,6 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import Carousel from "../../components/Carousel";
+import Carousel from "@/components/Carousel";
 import Login from "../Login";
+import mainBg from "../../assets/images/mainBg.png";
+import Logo from "../../assets/images/Logo.png";
+import Compra from "@/assets/images/Compra.png";
+import OrangeButton from "@/components/OrangeButton";
+import Listo from"@/assets/images/Listo.png"
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -13,35 +18,68 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 h-screen bg-landing-page">
-      <div className="flex flex-col gap-11 lg:self-start lg:h-full text-center">
+    <div
+      className="flex flex-col gap-4 lg:gap-0 lg:grid lg:grid-cols-2 h-screen bg-cover"
+      style={{
+        backgroundImage: `url(${mainBg})`
+      }}
+    >
+      <div
+        className="flex flex-col lg:flex-row lg:self-start lg:h-full items-center text-center"
+        style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
+      >
         {/*  div 1 *lg:bg-gray-200 */}
-        <h2 className="text-2xl font-bold pt-[5%]">Compra LISTo</h2>
-        <p className="m-auto">LOGO</p>
-        <p className="text-lg hidden lg:block">
-          ¡Únete a nuestra comunidad y obtén acceso a grandes ventajas!
+        <div className="lg:hidden w-24 h-24 rounded-full shadow-md">
+  <div className="w-full h-full rounded-full bg-white flex items-center justify-center shadow-lg border-4 border-gray-200">
+    <img
+      src={Logo}
+      alt="Logo"
+      className="rounded-full object-contain w-full h-full"
+    />
+  </div>
+</div>
+<div className="flex flex-wrap">
+      <img
+        src={Compra}
+        className="h-[5rem]"
+      />
+      <img
+        src={Listo}
+        className="h-auto"
+      />
+    </div>
+
+        <p className="text-lg self-end justify-self-center hidden lg:block">
+          La comunidad de compradores eficientes
         </p>
       </div>
-      <div className="flex-col items-center justify-center hidden  lg:block">
+      <div
+        className="flex-col items-center justify-center hidden  lg:block"
+        style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
+      >
         {/*  div 2 *lg:bg-gray-300 */}
-        <h2 className="text-2xl text-center font-bold">Bienvenido</h2>
-        <Login paddingTop={0}/>
+        <Login paddingTop={0} />
       </div>
-      <div className="flex items-center justify-center">
+      <div
+        className="flex flex-col items-center justify-center"
+        style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
+      >
         {/*  div 3 *lg:bg-gray-500 */}
+
         <Carousel />
       </div>
-      <div className="px-4 flex flex-col gap-4 text-center lg:m-auto">
+      <div
+        className="px-4 h-full w-full flex flex-col gap-4 text-center "
+        style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
+      >
         {/*  div 4 *lg:bg-gray-400 */}
-        <div className="gap-3">
+        <div className="flex flex-col gap-3 lg:m-auto">
           <p className="m-auto">Ahorra tiempo en tus compras y</p>
           <h2 className="text-2xl font-bold">¡Regístrate hoy!</h2>
-          <button
-            onClick={controlRegisterClick}
-            className="bg-black text-white py-2 px-4 rounded-md hover:bg-gray-700 focus:outline-none focus:shadow-outline focus:ring-offset-2 my-4"
-          >
-            Registrarse
-          </button>
+          <OrangeButton 
+          text="Registrarse"
+          onClick={controlRegisterClick}/>
+         
         </div>
         <div className="flex flex-col lg:hidden">
           <p className="text-lg">
@@ -61,4 +99,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage; 
+export default LandingPage;
