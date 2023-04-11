@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import LightBlueButton from "../../components/LightBlueButton";
+import OrangeButton from "../../components/OrangeButton";
 import InputForm from "../../components/InputForm";
 import GoBack from "@/layouts/GoBack";
 
@@ -85,7 +85,7 @@ const Register = () => {
             />
 
             <div className="flex flex-col justify-center">
-              <LightBlueButton
+              <OrangeButton
                 type="submit"
                 text="Registrarse"
               />

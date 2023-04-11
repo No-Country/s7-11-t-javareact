@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Card from '../../components/Card';
+import ListsCard from '../../components/ListsCard';
+import GoBack from '@/layouts/GoBack';
+import Navbar from '@/layouts/NavBar';
 
 const Home = () => {
 
@@ -14,8 +16,10 @@ const Home = () => {
   ];
 
   return (
-    <div className="container mx-auto p-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-      <div className="col-span-full flex justify-between items-center mb-6">
+    <div className="container mx-auto p-4 grid grid-cols-1 gap-4 h-full md:grid-cols-2 lg:grid-cols-3">
+      <Navbar/>
+      <GoBack />
+      <div className="col-span-full flex justify-between items-center h-full mb-6">
         <h1 className="text-2xl font-bold">Listas recientes</h1>
         <Link to="/list">
           <div className="w-16 h-16 lg:hidden bg-gray-200 rounded-full flex justify-center items-center cursor-pointer hover:bg-gray-300">
@@ -27,7 +31,8 @@ const Home = () => {
         </Link>
       </div>
       {recentLists.map((list) => (
-        <Card key={list.id} title={list.name} subtitle={`Actualizada ${list.date}`} />
+    
+        <ListsCard key={list.id} title={list.name} subtitle={`Actualizada ${list.date}`} />
       ))}
        <Link to="/list">
         <div className="hidden lg:block ">
