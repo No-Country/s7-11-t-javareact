@@ -27,6 +27,9 @@ public class Requirement {
     @Column(name = "updated_on_date")
     private LocalDateTime updateDate;
 
+    @Column(name = "status")
+    private boolean status = true;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "requirement_product",
             joinColumns = @JoinColumn(name = "id_requirement"),
