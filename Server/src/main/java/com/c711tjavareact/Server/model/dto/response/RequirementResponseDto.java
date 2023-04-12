@@ -5,16 +5,21 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.validation.constraints.NotBlank;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * A DTO for the {@link com.c711tjavareact.Server.model.entity.Requirement} entity
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class RequirementResponseDto implements Serializable {
-  private final Long id;
+  private Long id;
   @NotBlank(message = "Not Empty")
-  private final String name;
-  private final LocalDateTime updateDate;
-  private final List<Product> productList;
+  private String name;
+  private LocalDateTime updateDate;
+  private List<Product> productList;
 }
