@@ -58,7 +58,7 @@ function TabButton({ keyName, children, changeActiveTab, activeTab }) {
           ? "bg-primary text-white border border-primary"
           : "bg-white text-black border border-primary "
       }
-              py-2 px-4 font-medium flex justify-center items-center w-168 h-29 text-smv `}
+              py-2 px-4 font-medium flex justify-center items-center w-168 h-29 text-smv rounded-lg`}
       onClick={() => changeActiveTab(keyName)}
     >
       {children}
