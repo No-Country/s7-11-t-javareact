@@ -3,6 +3,9 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        'bg-main-image': "url('./src/assets/images/mainBg.png')",
+      },
       fontFamily: {
         'merriweather': ['Merriweather', 'serif'],
       },
