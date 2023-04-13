@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import OrangeButton from "@/components/OrangeButton";
 import InputForm from "@/components/InputForm";
 import GoBack from "@/layouts/GoBack";
+import mainBg from "../../assets/images/mainBg.png"
 
 const Login = ({ setIsAuthenticated, paddingTop }) => {
   const navigate = useNavigate();
@@ -32,10 +33,10 @@ const Login = ({ setIsAuthenticated, paddingTop }) => {
   };
 
   return (  
-  <main>
+  <main className="bg-[url('../../assets/images/mainBg.png')] lg:bg-none bg-cover">
     <div className="lg:hidden">   <GoBack /></div>
    
-      <div className="grid justify-items-center items-center h-full max-[1000px]:h-screen p-4">
+      <div className="grid justify-items-center items-center h-full max-[1000px]:h-screen p-4 " style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}>
         <div className="grid justify-items-center w-full lg:max-w-md  max-w-sm px-[4%] min-w-[321px]:px-[7%] py-7 rounded-lg shadow-lg border border-gray-200 bg-gray-100">
           <h1 className="text-2xl font-bold mb-4 text-center">
             Iniciar sesión

@@ -19,7 +19,7 @@ const LandingPage = () => {
 
   return (
     <div
-      className="flex flex-col gap-4 lg:gap-0 lg:grid lg:grid-cols-2 h-screen bg-cover"
+      className="flex flex-col lg:gap-0 lg:grid lg:grid-cols-2 h-screen bg-cover"
       style={{
         backgroundImage: `url(${mainBg})`
       }}
@@ -38,20 +38,20 @@ const LandingPage = () => {
     />
   </div>
 </div>
-<div className="flex flex-wrap">
+<div className="flex flex-wrap py-4">
       <img
         src={Compra}
-        className="h-[5rem]"
+        className="h-[5rem] hidden lg:block"
       />
       <img
         src={Listo}
-        className="h-auto"
+        className="h-auto hidden lg:block"
       />
-    </div>
-
-        <p className="text-lg self-end justify-self-center hidden lg:block">
+        <p className="text-lg m-auto">
           La comunidad de compradores eficientes
         </p>
+    </div>
+
       </div>
       <div
         className="flex-col items-center justify-center hidden  lg:block"
@@ -73,7 +73,7 @@ const LandingPage = () => {
         style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
       >
         {/*  div 4 *lg:bg-gray-400 */}
-        <div className="flex flex-col gap-3 lg:m-auto">
+        <div className="flex flex-col gap-3 lg:m-auto pt-4 px-[16%] md:px-[30%]">
           <p className="m-auto">Ahorra tiempo en tus compras y</p>
           <h2 className="text-2xl font-bold">¡Regístrate hoy!</h2>
           <OrangeButton 
