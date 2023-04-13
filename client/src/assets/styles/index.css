@@ -12,15 +12,10 @@
   @apply min-h-full;
 }
 
-
-.bg-gradient {
-  background: rgb(178, 249, 255);
-  background: linear-gradient(
-    90deg,
-    rgba(178, 249, 255, 1) 0%,
-    rgba(56, 161, 237, 0.7959558823529411) 50%,
-    rgba(104, 255, 162, 0.4962359943977591) 100%
-  );
+/* Backgrounds */
+.bg-main-image {
+  @apply bg-cover h-screen;
+  background-image: var(--bg-main-image);
 }
 
 /* Animaciones */
