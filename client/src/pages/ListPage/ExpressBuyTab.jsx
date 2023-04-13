@@ -75,7 +75,7 @@ function ExpressTab() {
   const controlDoneClick = () => {
     const selected = dailyProducts.filter((product) => product.checked);
     setSelectedProducts(selected);
-    setFormState(false)
+    setFormState(false);
   };
 
   const addProductClick = (productName) => {
@@ -103,7 +103,7 @@ function ExpressTab() {
   };
 
   return (
-    <section className="flex flex-col gap-5 justify-between ">
+    <section className="flex flex-col gap-5 justify-between lg:px-6">
       <ul className="h-72 overflow-y-auto">
         {dailyProducts.map((product) => (
           <li
@@ -112,7 +112,7 @@ function ExpressTab() {
               product.checked === true ? "bg-slate-500" : "bg-transparent"
             } flex justify-between items-center w-376 h-46 border-b-2 border-gray-300 p-5 text-lg`}
           >
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center ">
               {product.checked == false ? (
                 <BiPlusCircle
                   onClick={() => addSelectItem(product.id)}
@@ -134,7 +134,7 @@ function ExpressTab() {
                 <input
                   autoFocus="autofocus"
                   type="text"
-                  className="ml-2 w-full animate-blink bg-transparent rounded-md"
+                  className="ml-2 w-full animate-blink bg-transparent rounded-md focus:outline-none focus:ring focus:ring-transparent"
                   value={product.name}
                   onChange={(e) =>
                     handleEditProduct(
@@ -213,12 +213,14 @@ function ExpressTab() {
           } flex flex-col justify-center items-center gap-3 px-2 w-full h-20`}
         >
           <NewProductForm addProduct={addProductClick} />
-          <div>
+          <div className="px-6">
             <button
-              className="bg-blue-500 text-white px-4 py-2 rounded-md"
-              onClick={controlDoneClick}
+              className="absolute top-0 right-1 px-3 py-1 text-xl text-gray-500"
+              onClick={() => {
+                setFormState(false);
+              }}
             >
-              Listo
+              X
             </button>
           </div>
         </div>
@@ -245,11 +247,8 @@ function ExpressTab() {
           </li>
         ))}
       </ul>
-     
     </section>
   );
 }
-
-
 
 export default ExpressTab;
