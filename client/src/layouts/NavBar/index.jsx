@@ -6,16 +6,15 @@ function NavBar() {
 
   return (
     <nav className="bg-transparent">
-      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8"> 
+      <div className="max-w-7xl mx-auto px-4 pt-2 lg:px-8">
         <div className="relative flex items-center justify-center h-16">
-           <div className="flex ml-[45%] lg:ml-3">
+          <div className="flex ml-[45%] lg:ml-3">
             <img className="h-8 w-auto sm:h-10" src={smallLogo} alt="Logo" />
             <span className="hidden lg:block text-xl font-bold text-black font-poppins ml-3 mr-2 pr-3">
               Compra LISTo
             </span>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
-           
             <button
               className={`flex flex-col w-5 h-5 border-0 bg-transparent gap-1 btn-animation ${
                 isOpen ? "open" : ""
@@ -31,7 +30,7 @@ function NavBar() {
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
                 <a
-                  href="/"
+                  href="/home"
                   className="text-black  hover:bg-[#DAEDFF] px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Home
