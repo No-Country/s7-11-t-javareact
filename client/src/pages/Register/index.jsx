@@ -17,11 +17,11 @@ const Register = () => {
 
   return (
     <div
-      className="grid  min-h-screen bg-cover bg-center bg-fixed bg-gradient"
-      style={{ backgroundColor: `white` }}
+      className="grid  min-h-screen bg-center bg-fixed bg-[url('../../assets/images/mainBg.png')] lg:bg-none bg-cover"
+      
     >
       <GoBack />
-      <div className="grid justify-items-center items-center h-full p-4 ">
+      <div className="grid justify-items-center items-center h-full p-4 " style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}>
         <div className="grid justify-items-center w-full max-w-md px-[3%] min-w-[321px]:px-6 py-[4%] rounded-lg shadow-lg border border-gray-200 bg-gray-100">
           <h1 className="text-2xl font-bold mb-4">Registro</h1>
           <form className="w-full px-[10%]" onSubmit={handleSubmit(onSubmit)}>
