@@ -14,14 +14,16 @@ const ListPage = () => {
   };
 
   return (
-    <>
-      <NavBar />
-      <GoBack />
-      <main className="w-11/12 max-w-7xl mx-auto p-4">
+    <main className="lg:bg-contain bg-[url('../../assets/images/mainBg.png')]">
+      <div className="bg-white bg-opacity-80">
+        <NavBar />
+        <GoBack />
+      </div>
+      <div className="p-4 lg:px-11 bg-white bg-opacity-80">
         <div
           role="tablist"
           aria-label="List types Tabs"
-          className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,15rem),1fr))] py-5"
+          className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,15rem),1fr))] py-5 lg:px-5"
         >
           <TabButton
             keyName={EXPRESS_TAB_NAME}
@@ -35,7 +37,7 @@ const ListPage = () => {
             changeActiveTab={changeActiveTab}
             activeTab={activeTab}
           >
-            Compra Grande
+            Compra en Volumen
           </TabButton>
         </div>
 
@@ -43,8 +45,8 @@ const ListPage = () => {
           {activeTab === EXPRESS_TAB_NAME && <ExpressBuyTab />}
           {activeTab === BIG_TAB_NAME && <BigBuyTab />}
         </div>
-      </main>
-    </>
+      </div>
+    </main>
   );
 };
 
@@ -57,8 +59,8 @@ function TabButton({ keyName, children, changeActiveTab, activeTab }) {
         activeTab === keyName
           ? "bg-primary text-white border border-primary"
           : "bg-white text-black border border-primary "
-        }
-              py-2 px-4 font-medium flex justify-center items-center w-168 h-29 text-smv`}
+      }
+              py-2 px-[6%] lg:px-[20%] font-medium flex justify-center items-center w-168 h-29 text-smv`}
       onClick={() => changeActiveTab(keyName)}
     >
       {children}

@@ -13,20 +13,24 @@ function NewProductForm({ addProduct }) {
     setNewProductName("");
   };
   return (
-    <form className="flex" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Agregar nuevo product"
-        className="border rounded-l-md px-2 py-1 flex-grow"
-        value={newProductName}
-        onChange={changeProductName}
-      />
-      <button
-        type="submit"
-        className="bg-green-500 text-white px-4 py-1 rounded-r-md"
-      >
-        Agregar
-      </button>
+    <form className="flex flex-col items-center gap-3" onSubmit={handleSubmit}>
+      <div className="px-5 lg:px-0">
+        <input
+          type="text"
+          placeholder="Escriba el nombre del producto"
+          className="text-base border rounded-md px-2 py-1 flex-grow"
+          value={newProductName}
+          onChange={changeProductName}
+        />
+      </div>
+      <div className="w-full px-5">
+        <button
+          type="submit"
+          className="bg-green-500 w-full text-white px-4 py-1 rounded-md"
+        >
+          Agregar
+        </button>
+      </div>
     </form>
   );
 }

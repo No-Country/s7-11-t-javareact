@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ListsCard from '../../components/ListsCard';
+import ListCard from '../../components/ListCard';
 import GoBack from '@/layouts/GoBack';
 import Navbar from '@/layouts/NavBar';
 
@@ -33,7 +33,7 @@ const Home = () => {
         </div>
         {recentLists.map((list) => (
       
-          <ListsCard key={list.id} title={list.name} subtitle={`Actualizada ${list.date}`} />
+          <ListCard key={list.id} title={list.name} subtitle={`Actualizada ${list.date}`} />
         ))}
         <Link to="/list">
           <div className="hidden lg:block ">

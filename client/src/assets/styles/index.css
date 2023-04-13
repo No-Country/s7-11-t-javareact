@@ -8,8 +8,8 @@
 @tailwind components;
 @tailwind utilities;
 
-#root {
-  @apply min-h-full;
+html {
+  @apply h-screen;
 }
 
 /* Backgrounds */

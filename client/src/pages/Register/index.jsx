@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import OrangeButton from "../../components/OrangeButton";
 import InputForm from "../../components/InputForm";
 import GoBack from "@/layouts/GoBack";
+import mainBg from "@/assets/images/mainBg.png";
 
 const Register = () => {
   const {
@@ -17,11 +18,16 @@ const Register = () => {
 
   return (
     <div
-      className="grid  min-h-screen bg-center bg-fixed bg-[url('../../assets/images/mainBg.png')] lg:bg-none bg-cover"
-      
+      className="grid  min-h-screen bg-center bg-fixed bg-[url('../../assets/images/mainBg.png')] lg:bg-none bg-contain"
+      style={{
+        backgroundImage: `url(${mainBg})`,
+      }}
     >
       <GoBack />
-      <div className="grid justify-items-center items-center h-full p-4 " style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}>
+      <div
+        className="grid justify-items-center items-center h-full p-4 "
+        style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
+      >
         <div className="grid justify-items-center w-full max-w-md px-[3%] min-w-[321px]:px-6 py-[4%] rounded-lg shadow-lg border border-gray-200 bg-gray-100">
           <h1 className="text-2xl font-bold mb-4">Registro</h1>
           <form className="w-full px-[10%]" onSubmit={handleSubmit(onSubmit)}>
@@ -85,23 +91,18 @@ const Register = () => {
             />
 
             <div className="flex flex-col justify-center">
-              <OrangeButton
-                type="submit"
-                text="Registrarse"
-              />
+              <OrangeButton type="submit" text="Registrarse" />
               <div className="flex flex-wrap mt-[4%] text-center">
                 ¿Ya estás registrado?
                 <Link
                   className="text-blue-500 hover:text-blue-700 ml-1"
-                  to="/login"
+                  to="/*"
                 >
                   Iniciar sesión
                 </Link>
               </div>
             </div>
-            
           </form>
-          
         </div>
       </div>
     </div>
