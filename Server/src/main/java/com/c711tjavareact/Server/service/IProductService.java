@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 
 public interface IProductService {
-	ResponseEntity<ProductRequestDto>createProduct(ProductRequestDto productRequestDto);
+	ResponseEntity<ProductRequestDto>createProduct(ProductRequestDto productRequestDto, Long Id);
 	void deleteProduct(Long id);
 
 	ResponseEntity<ProductResponseDto> updateProduct(Long id, ProductRequestDto productRequestDto);

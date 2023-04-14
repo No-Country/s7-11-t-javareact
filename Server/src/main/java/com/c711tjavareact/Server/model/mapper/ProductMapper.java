@@ -1,14 +1,16 @@
 package com.c711tjavareact.Server.model.mapper;
 
+import com.c711tjavareact.Server.model.dto.request.CategoryRequestDto;
 import com.c711tjavareact.Server.model.dto.request.ProductRequestDto;
 import com.c711tjavareact.Server.model.dto.response.ProductResponseDto;
+import com.c711tjavareact.Server.model.entity.Category;
 import com.c711tjavareact.Server.model.entity.Product;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ProductMapper {
 
-    public Product entityToDto(ProductRequestDto Request){
+    public Product entityToDto(ProductRequestDto Request, Category category){
 
         Product product = new Product();
 
@@ -16,7 +18,7 @@ public class ProductMapper {
         product.setPrice(Request.getPrice());
         product.setQuantity(Request.getQuantity());
         product.setDiscount(Request.getDiscount());
-        product.setCategory(Request.getCategory());
+        product.setCategory(category);
 
         return product;
     }

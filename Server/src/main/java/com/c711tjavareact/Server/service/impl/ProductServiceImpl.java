@@ -1,9 +1,12 @@
 package com.c711tjavareact.Server.service.impl;
 
+import com.c711tjavareact.Server.exceptions.GeneralException;
 import com.c711tjavareact.Server.model.dto.request.ProductRequestDto;
 import com.c711tjavareact.Server.model.dto.response.ProductResponseDto;
+import com.c711tjavareact.Server.model.entity.Category;
 import com.c711tjavareact.Server.model.entity.Product;
 import com.c711tjavareact.Server.model.mapper.ProductMapper;
+import com.c711tjavareact.Server.repository.CategoryRepository;
 import com.c711tjavareact.Server.repository.ProductRepository;
 import com.c711tjavareact.Server.security.util.Mensaje;
 import com.c711tjavareact.Server.service.IProductService;
@@ -28,19 +31,28 @@ public class ProductServiceImpl implements IProductService {
     @Autowired
     ProductRepository productRepository;
 
+    @Autowired
+    CategoryServiceImpl categoryService;
+
+    @Autowired
+    CategoryRepository categoryRepository;
+
 
     @Override
     @Transactional
-    public ResponseEntity<ProductRequestDto> createProduct(ProductRequestDto productRequestDto) {
+    public ResponseEntity<ProductRequestDto> createProduct(ProductRequestDto productRequestDto, Long idCategory) {
         try {
+            Category category = categoryRepository.findById(idCategory).orElse(null);
 
-            Product product1 = productMapper.entityToDto(productRequestDto);
-            productRepository.save(product1);
-            System.out.println(product1.toString());
-            return new ResponseEntity(new Mensaje("create Product"), HttpStatus.CREATED);
-
+            if (category != null) {
+                Product product1 = productMapper.entityToDto(productRequestDto, category);
+                productRepository.save(product1);
+                return new ResponseEntity(product1, HttpStatus.CREATED);
+            } else {
+                throw new GeneralException("No se encontro el producto", HttpStatus.BAD_REQUEST);
+            }
         } catch (Exception e) {
-            return new ResponseEntity(e, HttpStatus.BAD_REQUEST);
+            throw new GeneralException(e.toString(), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -67,7 +79,7 @@ public class ProductServiceImpl implements IProductService {
             productResponseDto = productMapper.dtoToEntity(product1);
             return new ResponseEntity<>(productResponseDto, HttpStatus.OK);
         } else {
-            return new ResponseEntity(new Mensaje("No se encontro el producto"), HttpStatus.BAD_REQUEST);
+            throw new GeneralException("No se encontro el producto", HttpStatus.BAD_REQUEST);
         }
     }
 

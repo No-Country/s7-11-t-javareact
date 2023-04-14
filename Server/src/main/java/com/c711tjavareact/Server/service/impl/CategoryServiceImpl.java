@@ -62,6 +62,16 @@ public class CategoryServiceImpl implements ICategoryService {
     }
   }
 
+  public void addProduct(Product product, Long id) {
+    Category category = categoryRepository.findById(id).orElse(null);
+    if (category != null) {
+      List<Product> productList = category.getProducts();
+      productList.add(product);
+      category.setProducts(productList);
+      categoryRepository.save(category);
+    }
+  }
+
   @Override
   public ResponseEntity<List<CategoryResponseDto>> findCategories() {
     List<Category> categoryList = categoryRepository.findAll();
