@@ -153,7 +153,7 @@ const BigBuyTab = () => {
               )
             )}
           </div>
-          <div className="w-full lg:px-[30%]">
+          <div className="w-full py-[7%] lg:px-[30%]">
             <button
               className="bg-green-500 w-full text-white px-4 py-2 rounded-md "
               onClick={controlGenerateList}
