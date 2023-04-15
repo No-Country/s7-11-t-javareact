@@ -17,7 +17,7 @@ const InputForm = ({
   return (
     <div className="flex flex-col m-auto max-w-sm">
       <div
-        className={`relative ${errorMessage && errorVisible ? "pb-0" : "pb-4"}`}
+        className={`relative ${errorMessage && errorVisible ? "pb-0" : "pb-2 sm:pb-4"}`}
       >
         <label
           htmlFor={register.name}

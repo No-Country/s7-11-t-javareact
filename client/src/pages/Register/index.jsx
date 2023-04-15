@@ -23,12 +23,11 @@ const Register = () => {
         backgroundImage: `url(${mainBg})`,
       }}
     >
-      <GoBack />
-      <div
+            <div
         className="grid justify-items-center items-center h-full p-4 "
         style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
       >
-        <div className="grid justify-items-center w-full max-w-md px-[3%] min-w-[321px]:px-6 py-[4%] rounded-lg shadow-lg border border-gray-200 bg-gray-100">
+        <div className="grid justify-items-center w-full max-w-md px-[3%] min-w-[321px]:px-6 py-[2%] rounded-lg shadow-lg border border-gray-200 bg-white">
           <h1 className="text-2xl font-bold mb-4">Registro</h1>
           <form className="w-full px-[10%]" onSubmit={handleSubmit(onSubmit)}>
             <InputForm
@@ -95,8 +94,8 @@ const Register = () => {
               <div className="flex flex-wrap mt-[4%] text-center">
                 ¿Ya estás registrado?
                 <Link
-                  className="text-blue-500 hover:text-blue-700 ml-1"
-                  to="/*"
+                  className="text-blue-500 hover:text-blue-700 ml-1 lg:ml-4"
+                  to="/"
                 >
                   Iniciar sesión
                 </Link>

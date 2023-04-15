@@ -58,7 +58,7 @@ const Carousel = () => {
   }, [currentCategory, categoryDetails.length, intervalTime]);
 
   return (
-    <div className="flex pt-4 lg:w-full lg:h-full">
+    <div className="flex py-4 lg:w-full lg:h-full">
       <div className="flex lg:space-x-2 w-full h-full">
         <div className="self-center">
           <button onClick={prevCategory} className="text-2xl">
