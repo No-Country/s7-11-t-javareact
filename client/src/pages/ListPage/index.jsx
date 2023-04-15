@@ -14,16 +14,16 @@ const ListPage = () => {
   };
 
   return (
-    <main className=" bg-[url('../../assets/images/mainBg.png')] bg-top min-h-screen">
-      <div className=" bg-white bg-opacity-80 min-h-screen">
-        <header className="container">
-          <NavBar />
-          <GoBack />
-        </header>
+    <main className="lg:bg-contain bg-[url('../../assets/images/mainBg.png')]">
+      <div className="bg-white bg-opacity-80">
+        <NavBar />
+        <GoBack />
+      </div>
+      <div className="p-4 lg:px-11 bg-white bg-opacity-80">
         <div
           role="tablist"
           aria-label="List types Tabs"
-          className="flex py-5 container "
+          className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,15rem),1fr))] py-5 lg:px-5"
         >
           <TabButton
             keyName={EXPRESS_TAB_NAME}
@@ -41,7 +41,7 @@ const ListPage = () => {
           </TabButton>
         </div>
 
-        <div className=" h-full " role="tabpanel">
+        <div className="mt-8 h-full" role="tabpanel">
           {activeTab === EXPRESS_TAB_NAME && <ExpressBuyTab />}
           {activeTab === BIG_TAB_NAME && <BigBuyTab />}
         </div>
@@ -60,8 +60,7 @@ function TabButton({ keyName, children, changeActiveTab, activeTab }) {
           ? "bg-primary text-white border border-primary"
           : "bg-white text-black border border-primary "
       }
-      first:rounded-l-md last:rounded-r-md
-       flex-grow  py-2 font-medium flex justify-center items-center  text-sm`}
+              py-2 px-[6%] lg:px-[20%] font-medium flex justify-center items-center w-168 h-29 text-smv`}
       onClick={() => changeActiveTab(keyName)}
     >
       {children}
