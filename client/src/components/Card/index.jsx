@@ -1,12 +1,12 @@
 const Card = ({ image, service, paragraph }) => {
   return (
     <div className="flex flex-col lg:w-full lg:h-full">
-      <div className="flex flex-col justify-center  max-w-full lg:h-full lg:bg-transparent bg-gray-50 drop-shadow-md rounded-2xl text-center text-neutral-900 h-[17rem]">
+      <div className="flex flex-col justify-center max-w-full lg:h-full lg:bg-transparent bg-white bg-opacity-80 drop-shadow-md rounded-2xl text-center text-neutral-900 h-[17rem]">
         <div
           className="w-full pl-[3%] px-[4%] justify-self-center self-center h-[9rem] max-w-sm rounded-md flex-shrink-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${image})` }}
         ></div>
-        <div className="flex flex-col items-center self-center w-full h-[7rem] px-1 mt-[4%] max-w-sm">
+        <div className="flex flex-col items-center self-center w-full h-[10rem] sm:h-[7rem] px-1 mt-[4%] max-w-sm">
           <b>
             <h2 className="text-title font-title max-w-[270px] text-base ">
               {service}
