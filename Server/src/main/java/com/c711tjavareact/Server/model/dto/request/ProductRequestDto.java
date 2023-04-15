@@ -1,8 +1,6 @@
 package com.c711tjavareact.Server.model.dto.request;
 
-import com.c711tjavareact.Server.model.entity.Category;
 import com.c711tjavareact.Server.model.entity.Requirement;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.validation.constraints.NotBlank;
@@ -22,6 +20,5 @@ public class ProductRequestDto implements Serializable {
   private float price;
   private int quantity;
   private int discount;
-  private Category category;
   private List<Requirement> requirementList;
 }
