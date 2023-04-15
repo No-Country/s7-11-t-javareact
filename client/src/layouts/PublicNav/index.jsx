@@ -73,7 +73,7 @@ function NavBar() {
       <div
         className={`${
           isOpen ? "block" : "hidden"
-        } lg:hidden absolute bg-white w-full left-0 `}
+        } lg:hidden absolute bg-white w-full left-0 z-20`}
       >
         <div className="px-2 pt-5 pb-3 space-y-1">
           <ul className="w-full">
