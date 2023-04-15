@@ -19,6 +19,8 @@ html {
 }
 
 /* Animaciones */
+
+/* Animate menu */
 .btn-line {
   background-color: black;
   transition: all 0.5s ease-in-out;
@@ -37,3 +39,25 @@ html {
   transform: rotate(-40deg);
   top: -11px;
 }
+
+/* Animate Spinning Cart */
+@keyframes move-cart {
+  0% {
+    transform: translateX(-300%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+
+.animate-spinning-cart {
+  animation-name: move-cart;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+}
+
