@@ -1,6 +1,5 @@
 package com.c711tjavareact.Server.model.dto.response;
 
-import com.c711tjavareact.Server.model.entity.Category;
 import com.c711tjavareact.Server.model.entity.Requirement;
 import java.io.Serializable;
 import java.util.List;
@@ -23,6 +22,5 @@ public class ProductResponseDto implements Serializable {
   private float price;
   private int quantity;
   private int discount;
-  private Category category;
   private List<Requirement> requirementList;
 }
