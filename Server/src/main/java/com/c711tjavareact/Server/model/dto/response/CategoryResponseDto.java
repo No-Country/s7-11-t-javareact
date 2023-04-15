@@ -1,6 +1,7 @@
 package com.c711tjavareact.Server.model.dto.response;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -17,5 +18,5 @@ public class CategoryResponseDto implements Serializable {
   private Long id;
   @NotBlank(message = "Not Empty")
   private String name;
-  private List<ProductResponseDto> products;
+  private List<ProductResponseDto> products = new ArrayList<>();
 }

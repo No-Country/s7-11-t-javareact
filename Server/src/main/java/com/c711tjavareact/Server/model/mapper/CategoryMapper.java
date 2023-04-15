@@ -12,8 +12,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class CategoryMapper {
 
-  ProductMapper productMapper;
-  public Category entityToDto(CategoryRequestDto Request) {
+  @Autowired
+  private ProductMapper productMapper;
+
+  public Category dtoToEntity(CategoryRequestDto Request) {
     Category category = new Category();
 
     category.setName(Request.getName());
@@ -22,19 +24,19 @@ public class CategoryMapper {
     return category;
   }
 
-  public CategoryResponseDto dtoToEntity(Category entity) {
+  public CategoryResponseDto entityToDto(Category entity) {
     CategoryResponseDto categoryResponseDto = new CategoryResponseDto();
 
     categoryResponseDto.setId(entity.getId());
     categoryResponseDto.setName(entity.getName());
 
-/*    List<ProductResponseDto> listProductDto = new ArrayList<>();
+    List<ProductResponseDto> listProductDto = new ArrayList<>();
     entity.getProducts().forEach(product -> {
-      ProductResponseDto productResponseDto = productMapper.dtoToEntity(product);
+      ProductResponseDto productResponseDto = productMapper.entityToDto(product);
       listProductDto.add(productResponseDto);
     });
 
-    categoryResponseDto.setProducts(listProductDto);*/
+    categoryResponseDto.setProducts(listProductDto);
 
     return categoryResponseDto;
   }

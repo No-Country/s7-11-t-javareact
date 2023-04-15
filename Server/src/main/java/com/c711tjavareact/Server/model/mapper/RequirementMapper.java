@@ -13,7 +13,7 @@ public class RequirementMapper {
         Requirement requirement = new Requirement();
 
         requirement.setName(Request.getName());
-        requirement.setProductList(Request.getProductList());
+/*        requirement.setProductList(Request.getProductList());*/
 
         return requirement;
     }
@@ -38,7 +38,7 @@ public class RequirementMapper {
     public Requirement updateRequirement(Requirement requirement, RequirementRequestDto requestDto){
 
         requirement.setName(requestDto.getName());
-        requirement.setProductList(requestDto.getProductList());
+/*        requirement.setProductList(requestDto.getProductList());*/
 
         return requirement;
 

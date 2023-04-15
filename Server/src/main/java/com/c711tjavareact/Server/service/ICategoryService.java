@@ -16,4 +16,5 @@ public interface ICategoryService {
   ResponseEntity<CategoryResponseDto> updateCategory(Long id, CategoryRequestDto categoryRequestDto);
 
   ResponseEntity<List<CategoryResponseDto>> findCategories();
+
 }
