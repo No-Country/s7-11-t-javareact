@@ -8,6 +8,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .container {
+		@apply w-11/12 max-w-7xl mx-auto;
+	}
+}
+
 html {
   @apply h-screen;
 }
