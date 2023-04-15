@@ -90,7 +90,7 @@ const Footer = () => (
           </a>
         </div>
         <div className="border-t border-gray-400 lg:pt-8 lg:mt-8 sm:flex sm:justify-around">
-          <div className="hidden lg:block flex"></div>
+          <div className="hidden lg:block"></div>
           <p className="text-sm text-gray-400 my-2 lg:mb-2 lg:my-0">
             &copy; 2023 Compra Listo. Todos los derechos reservados.
           </p>
