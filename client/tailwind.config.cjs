@@ -8,6 +8,9 @@ module.exports = {
       },
       fontFamily: {
         'merriweather': ['Merriweather', 'serif'],
+        'sriracha': ['Sriracha', 'cursive'],
+        'cabin': ['Cabin Sketch', 'cursive'],
+        'damion': ['Damion', 'cursive'],
       },
       height: {
         '55vh': '55vh', // definir el valor de 120 como 30rem
