@@ -33,9 +33,8 @@ const Login = ({ setIsAuthenticated, paddingTop }) => {
   };
 
   return (
-    <main className="bg-[url('../../assets/images/mainBg.png')] lg:bg-none bg-cover lg:pt-4">
+    <main className="bg-[url('../../assets/images/mainBg.png')] lg:bg-none bg-cover lg:pt-[10%]">
       <div className="lg:hidden">
-        <GoBack />
       </div>
 
       <div className="grid justify-items-center items-center h-screen lg:h-full  bg-white bg-opacity-80 lg:bg-transparent p-4 lg:p-0">
