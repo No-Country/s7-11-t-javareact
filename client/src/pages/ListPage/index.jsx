@@ -14,11 +14,8 @@ const ListPage = () => {
   };
 
   return (
-    <main className="lg:bg-contain bg-[url('../../assets/images/mainBg.png')]">
-      <div className="bg-white bg-opacity-80">
-        <NavBar />
-        <GoBack />
-      </div>
+    <main className="z-0 lg:bg-contain bg-[url('../../assets/images/mainBg.png')]">
+      
       <div className="p-4 lg:px-11 bg-white bg-opacity-80">
         <div
           role="tablist"
