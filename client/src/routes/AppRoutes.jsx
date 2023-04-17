@@ -14,7 +14,7 @@ import PublicNav from "@/layouts/PublicNav";
 import Footer from "@/layouts/Footer";
 import LoadingSpinner from "@/components/LoadingSpinner";
 
-const AppRoutes = ({ isAuthenticated }) => {
+const AppRoutes = ({ setIsAuthenticated, isAuthenticated }) => {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
@@ -34,7 +34,10 @@ const AppRoutes = ({ isAuthenticated }) => {
               element={
                 <>
                   <PublicNav />
-                  <LandingPage />
+                  <LandingPage
+                    setIsAuthenticated={setIsAuthenticated}
+                    isAuthenticated={isAuthenticated}
+                  />
                   <Footer />
                 </>
               }
@@ -44,7 +47,8 @@ const AppRoutes = ({ isAuthenticated }) => {
               element={
                 <>
                   <GoBack />
-                  <Login />
+                  <Login   setIsAuthenticated={setIsAuthenticated}
+                    isAuthenticated={isAuthenticated}/>
                 </>
               }
             />
