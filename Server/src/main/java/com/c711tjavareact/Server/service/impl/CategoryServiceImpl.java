@@ -5,8 +5,10 @@ import com.c711tjavareact.Server.model.dto.request.CategoryRequestDto;
 import com.c711tjavareact.Server.model.dto.response.CategoryResponseDto;
 import com.c711tjavareact.Server.model.entity.Category;
 import com.c711tjavareact.Server.model.entity.Product;
+import com.c711tjavareact.Server.model.entity.Requirement;
 import com.c711tjavareact.Server.model.mapper.CategoryMapper;
 import com.c711tjavareact.Server.repository.CategoryRepository;
+import com.c711tjavareact.Server.repository.RequirementRepository;
 import com.c711tjavareact.Server.security.util.Mensaje;
 import com.c711tjavareact.Server.service.ICategoryService;
 
@@ -15,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 import java.util.stream.Collectors;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,14 +30,27 @@ public class CategoryServiceImpl implements ICategoryService {
     CategoryRepository categoryRepository;
 
     @Autowired
+    RequirementRepository requirementRepository;
+
+    @Autowired
     CategoryMapper categoryMapper;
 
-    @Override
-    public ResponseEntity<Mensaje> createCategory(CategoryRequestDto categoryRequestDto) {
 
-        Category category1 = categoryMapper.dtoToEntity(categoryRequestDto);
-        categoryRepository.save(category1);
-        return new ResponseEntity<>(new Mensaje("create Category"), HttpStatus.CREATED);
+    @Override
+    @Transactional
+    public ResponseEntity<Mensaje> createCategory(CategoryRequestDto categoryRequestDto, Long idRequirement) {
+
+        Requirement requirement = requirementRepository.findById(idRequirement).orElse(null);
+
+        if( requirement != null) {
+            Category category1 = categoryMapper.dtoToEntity(categoryRequestDto, requirement);
+            category1 = categoryRepository.save(category1);
+            requirement.getCategory().add(category1);
+            return new ResponseEntity<>(new Mensaje("create Category"), HttpStatus.CREATED);
+        } else {
+            throw new GeneralException("can't create Category", HttpStatus.BAD_REQUEST);
+        }
+
     }
 
     @Override

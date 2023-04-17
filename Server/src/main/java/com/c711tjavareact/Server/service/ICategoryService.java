@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 
 public interface ICategoryService {
 
-  ResponseEntity<Mensaje> createCategory(CategoryRequestDto categoryRequestDto);
+  ResponseEntity<Mensaje> createCategory(CategoryRequestDto categoryRequestDto, Long idRequirement);
 
   void deleteCategory (Long id);
 

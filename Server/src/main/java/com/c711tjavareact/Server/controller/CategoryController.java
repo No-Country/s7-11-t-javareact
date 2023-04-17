@@ -27,10 +27,11 @@ public class CategoryController {
   @Autowired
   CategoryServiceImpl categoryService;
 
-  @PostMapping("/create-category")
-  public ResponseEntity<Mensaje> createCategory(@RequestBody CategoryRequestDto categoryRequestDto) {
+  @PostMapping("/create-category/{idRequirement}")
+  public ResponseEntity<Mensaje> createCategory(@RequestBody CategoryRequestDto categoryRequestDto,
+                                                @PathVariable Long idRequirement) {
 
-    ResponseEntity<Mensaje> create = categoryService.createCategory(categoryRequestDto);
+    ResponseEntity<Mensaje> create = categoryService.createCategory(categoryRequestDto, idRequirement);
 
     return new ResponseEntity<Mensaje>(create.getBody(), create.getStatusCode());
   }

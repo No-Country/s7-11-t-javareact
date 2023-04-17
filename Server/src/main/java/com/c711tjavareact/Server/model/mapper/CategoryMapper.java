@@ -4,6 +4,7 @@ import com.c711tjavareact.Server.model.dto.request.CategoryRequestDto;
 import com.c711tjavareact.Server.model.dto.response.CategoryResponseDto;
 import com.c711tjavareact.Server.model.dto.response.ProductResponseDto;
 import com.c711tjavareact.Server.model.entity.Category;
+import com.c711tjavareact.Server.model.entity.Requirement;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,12 @@ public class CategoryMapper {
   @Autowired
   private ProductMapper productMapper;
 
-  public Category dtoToEntity(CategoryRequestDto Request) {
+  public Category dtoToEntity(CategoryRequestDto Request, Requirement requirement) {
     Category category = new Category();
 
     category.setName(Request.getName());
     category.setProducts(Request.getProducts());
+    category.setRequirement(requirement);
 
     return category;
   }
