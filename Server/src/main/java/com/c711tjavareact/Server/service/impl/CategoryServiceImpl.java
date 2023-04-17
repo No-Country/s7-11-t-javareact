@@ -81,6 +81,14 @@ public class CategoryServiceImpl implements ICategoryService {
 
         categoryList.forEach(category -> {
             if (category.isStatus()) {
+                List<Product> productList = new ArrayList<>();
+                List<Product> categoryProducts = category.getProducts();
+                categoryProducts.forEach(product -> {
+                    if (product.isStatus()) {
+                        productList.add(product);
+                    }
+                });
+                category.setProducts(productList);
                 CategoryResponseDto categoryResponseDto = categoryMapper.entityToDto(category);
                 responseCategoryList.add(categoryResponseDto);
             }
