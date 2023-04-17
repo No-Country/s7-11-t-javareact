@@ -102,6 +102,16 @@ function ExpressTab() {
     setDailyProducts(updatedProducts);
   };
 
+  const updateQuantity = (id, quantity, state) => {
+    const updatedQuantitys = stateSelectItem.map((product) =>
+      product.id === id
+        ? { ...product, quantity, editing: state }
+        : { ...product, editing: false }
+    );
+    setStateSelectItem(updatedQuantitys);
+    localStorage.setItem("selectItemState", JSON.stringify(updatedQuantitys));
+  };
+
   return (
     <section className="flex flex-col gap-5 justify-between lg:px-6">
       <ul className="h-72 overflow-y-auto">
@@ -149,7 +159,7 @@ function ExpressTab() {
                       handleEditProduct(
                         product.id,
                         e.target.value,
-                        product.editing
+                        false
                       );
                       inputRef.current.blur();
                     }
@@ -229,7 +239,7 @@ function ExpressTab() {
         {stateSelectItem.map((product) => (
           <li
             key={product.id}
-            className="w-full flex justify-between px-2 py-1"
+            className="w-full flex justify-end px-2 py-1"
           >
             <div className="w-72 flex gap-1 justify-start items-center border-r-2 border-black">
               <div className="bg-primary-300 p-2">
@@ -238,7 +248,54 @@ function ExpressTab() {
               <div>{product.name}</div>
             </div>
             <div className="w-full flex justify-end items-center gap-2 bg-[#ecf6fd]">
-              <div>{product.quantity}x</div>
+            <div className="flex justify-end items-center">
+                {product.editing ? (
+                  <input
+                    autoFocus="autofocus"
+                    type="text"
+                    className="ml-2 text-end animate-blink bg-transparent rounded-md focus:outline-none focus:ring focus:ring-transparent"
+                    value={product.quantity}
+                    onChange={(e) =>
+                      updateQuantity(
+                        product.id,
+                        e.target.value,
+                        product.editing
+                      )
+                    }
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        updateQuantity(product.id, e.target.value, false);
+                        inputRef.current.blur();
+                      }
+                    }}
+                    ref={inputRef}
+                  />
+                ) : (
+                  <div className="flex gap-1 items-center justify-end ">
+                    <label htmlFor={product.id} className=" ml-2">
+                      {product.quantity}
+                    </label>
+                    <div>x</div>
+                  </div>
+                )}
+              </div>
+              <FaRegCheckCircle
+                onClick={() => {
+                  updateQuantity(product.id, product.quantity, false);
+                }}
+                className={`${
+                  product.editing === true ? "block" : "hidden"
+                } text-2xl text-green-600 cursor-pointer`}
+              />
+              <FaEdit
+                onClick={() => {
+                  updateQuantity(product.id, product.quantity, true);
+                }}
+                className={`${
+                  product.editing ? "hidden" : "block"
+                } text-2xl text-orange-600 cursor-pointer`}
+              />
               <HiXMark
                 onClick={() => removeSelectItem(product.id)}
                 className="text-2xl text-white bg-red-600 cursor-pointer border border-red hover:bg-white hover:text-red-500"
