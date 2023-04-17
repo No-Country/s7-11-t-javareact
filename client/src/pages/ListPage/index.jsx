@@ -15,13 +15,8 @@ const ListPage = () => {
 
   return (
     <main className="z-0 lg:bg-contain bg-[url('../../assets/images/mainBg.png')]">
-      
       <div className="p-4 lg:px-11 bg-white bg-opacity-80">
-        <div
-          role="tablist"
-          aria-label="List types Tabs"
-          className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,15rem),1fr))] py-5 lg:px-5"
-        >
+        <div role="tablist" aria-label="List types Tabs" className="flex">
           <TabButton
             keyName={EXPRESS_TAB_NAME}
             changeActiveTab={changeActiveTab}
@@ -56,8 +51,9 @@ function TabButton({ keyName, children, changeActiveTab, activeTab }) {
         activeTab === keyName
           ? "bg-primary text-white border border-primary"
           : "bg-white text-black border border-primary "
-      }
-              py-2 px-[6%] lg:px-[20%] font-medium flex justify-center items-center w-168 h-29 text-smv`}
+      } 
+      first:rounded-l-md last:rounded-r-md
+      flex-grow  py-2 font-medium flex justify-center items-center  text-sm`}
       onClick={() => changeActiveTab(keyName)}
     >
       {children}
