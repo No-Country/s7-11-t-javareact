@@ -1,5 +1,7 @@
 package com.c711tjavareact.Server.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.ArrayList;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -30,10 +32,7 @@ public class Requirement {
     @Column(name = "status")
     private boolean status = true;
 
-/*    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "requirement_product",
-            joinColumns = @JoinColumn(name = "id_requirement"),
-            inverseJoinColumns = @JoinColumn(name = "id_product"))
-    private List<Product> productList;*/
-
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "requirement")
+    @JsonIgnoreProperties("requirement")
+    List<Category> category = new ArrayList<>();
 }

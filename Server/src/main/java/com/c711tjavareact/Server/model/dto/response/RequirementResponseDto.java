@@ -3,6 +3,7 @@ package com.c711tjavareact.Server.model.dto.response;
 import com.c711tjavareact.Server.model.entity.Product;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.NotBlank;
 
@@ -21,5 +22,5 @@ public class RequirementResponseDto implements Serializable {
   @NotBlank(message = "Not Empty")
   private String name;
   private LocalDateTime updateDate;
-  private List<Product> productList;
+  private List<CategoryResponseDto> categoryResponseDtoList = new ArrayList<>();
 }

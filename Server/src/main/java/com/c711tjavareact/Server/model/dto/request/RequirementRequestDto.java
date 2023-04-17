@@ -1,5 +1,6 @@
 package com.c711tjavareact.Server.model.dto.request;
 
+import com.c711tjavareact.Server.model.entity.Category;
 import com.c711tjavareact.Server.model.entity.Product;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,5 +18,5 @@ public class RequirementRequestDto {
 
   private LocalDateTime updateDate;
 
-  private List<Product> productList;
+  private List<Category> categoryList;
 }
