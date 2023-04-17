@@ -6,7 +6,10 @@ const App = () => {
 
   return (
     <div className="App">
-      <AppRoutes isAuthenticated={isAuthenticated} />
+      <AppRoutes
+        isAuthenticated={isAuthenticated}
+        setIsAuthenticated={setIsAuthenticated}
+      />
     </div>
   );
 };
