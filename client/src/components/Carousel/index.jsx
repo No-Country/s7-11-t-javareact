@@ -20,27 +20,27 @@ const Carousel = () => {
 
   const categoryDetails = [
     {
-      img: 'https://i.postimg.cc/7ZFVdHHH/3887312-11697.jpg',
+      img: 'https://i.postimg.cc/VstzCrcW/Image-generated-1681705906-1.png',
       category: 'Ordene todas sus compras en un solo lugar',
       categoryDescription: 'Agrega listas y ordena tus compras rápido y fácil',
     },
     {
-      img: 'https://i.postimg.cc/2STDzKtB/familia.jpg',
+      img: 'https://i.postimg.cc/LX0NT8Kt/Image-generated-1681705254-3.png',
       category: 'Agrega tus compas del hogar',
       categoryDescription: 'Compras grandes o rápidas, guardalas en un solo lugar',
     },
     {
-      img: 'https://i.postimg.cc/PJF3q0D2/fam.jpg',
+      img: 'https://i.postimg.cc/jdLqSgSC/Image-generated-1681706493-1.png',
       category: 'Edita, crea y elimina productos',
       categoryDescription: 'Puedes actualizar tu lista cuantas veces desees',
     },
     {
-      img: 'https://i.postimg.cc/L687t36z/mujer.jpg',
+      img: 'https://i.postimg.cc/gcxHqpMD/Image-generated-1681706341-1.png',
       category: 'Controla tu presupuesto de tus compras',
       categoryDescription: 'Cuentas claras y rápidas para tus presupuestos',
     },
     {
-      img: 'https://i.postimg.cc/Sx8yX1bx/pareja.jpg',
+      img: 'https://i.postimg.cc/XqVv74DC/b7710b96-445b-40b8-ade9-9a1120718788.png',
       category: 'Comparte la lista de tus compras',
       categoryDescription: 'Con las personas que desees, fácil y rápido',
     },
