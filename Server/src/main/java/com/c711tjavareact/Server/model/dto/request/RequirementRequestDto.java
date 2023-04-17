@@ -12,7 +12,7 @@ public class RequirementRequestDto {
   @Id
   private Long id;
 
-  @NotBlank(message = "Not Empty")
+  @NotBlank(message = "name is empty")
   private String name;
 
   private LocalDateTime updateDate;

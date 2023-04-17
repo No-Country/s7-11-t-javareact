@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ProductResponseDto implements Serializable {
   private Long id;
-  @NotBlank(message = "Not Empty")
+  @NotBlank(message = "name is empty")
   private String name;
   private float price;
   private int quantity;

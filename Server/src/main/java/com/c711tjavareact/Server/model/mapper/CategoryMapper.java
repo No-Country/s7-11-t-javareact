@@ -26,11 +26,10 @@ public class CategoryMapper {
 
   public CategoryResponseDto entityToDto(Category entity) {
     CategoryResponseDto categoryResponseDto = new CategoryResponseDto();
-
     categoryResponseDto.setId(entity.getId());
     categoryResponseDto.setName(entity.getName());
-
     List<ProductResponseDto> listProductDto = new ArrayList<>();
+
     entity.getProducts().forEach(product -> {
       ProductResponseDto productResponseDto = productMapper.entityToDto(product);
       listProductDto.add(productResponseDto);

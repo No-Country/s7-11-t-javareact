@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 @RestController
@@ -23,7 +25,7 @@ public class ProductController {
 
 
     @PostMapping("/create-product/{idCategory}")
-    public ResponseEntity<ProductRequestDto> createProduct(@RequestBody ProductRequestDto productRequestDto,
+    public ResponseEntity<ProductRequestDto> createProduct( @Valid  @RequestBody ProductRequestDto productRequestDto,
                                                            @PathVariable Long idCategory) {
 
         ResponseEntity<?> create = productService.createProduct(productRequestDto, idCategory);

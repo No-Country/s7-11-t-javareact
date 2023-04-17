@@ -25,8 +25,9 @@ public class Product {
     private Long id;
 
     @Column(name = "name", nullable = false)
-    @NotBlank(message = "Not Empty")
+    @NotBlank(message = " name is empty")
     private String name;
+
 
     @Column(name = "price")
     private float price;

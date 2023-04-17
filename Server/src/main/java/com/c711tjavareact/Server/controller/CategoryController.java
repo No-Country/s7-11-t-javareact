@@ -9,6 +9,7 @@ import com.c711tjavareact.Server.service.impl.CategoryServiceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/category")
 public class CategoryController {
@@ -26,7 +29,7 @@ public class CategoryController {
   CategoryServiceImpl categoryService;
 
   @PostMapping("/create-category")
-  public ResponseEntity<Mensaje> createCategory(@RequestBody CategoryRequestDto categoryRequestDto) {
+  public ResponseEntity<Mensaje> createCategory(@Validated @RequestBody CategoryRequestDto categoryRequestDto) {
 
     ResponseEntity<Mensaje> create = categoryService.createCategory(categoryRequestDto);
 
@@ -40,7 +43,7 @@ public class CategoryController {
   }
 
   @PutMapping("/update/{id}")
-  public ResponseEntity<CategoryResponseDto> updateCategory(@PathVariable Long id,
+  public ResponseEntity<CategoryResponseDto> updateCategory(@Valid @PathVariable Long id,
                                                           @RequestBody CategoryRequestDto categoryRequestDto) {
     ResponseEntity<CategoryResponseDto> update = categoryService.updateCategory(id, categoryRequestDto);
 

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.NO_CONTENT;
@@ -19,7 +20,7 @@ public class RequirementController {
     RequirementServiceImpl requirementService;
 
     @PostMapping("/create-requirement")
-    public ResponseEntity<Mensaje> createRequirement(@RequestBody RequirementRequestDto requirementRequestDto){
+    public ResponseEntity<Mensaje> createRequirement( @Valid  @RequestBody RequirementRequestDto requirementRequestDto){
         ResponseEntity<Mensaje> create = requirementService.createRequirement(requirementRequestDto);
 
         return new ResponseEntity<Mensaje>(create.getBody(),create.getStatusCode());
