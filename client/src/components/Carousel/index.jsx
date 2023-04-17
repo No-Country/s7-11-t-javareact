@@ -59,29 +59,30 @@ const Carousel = () => {
 
   return (
     <div className="flex py-4 lg:w-full lg:h-full">
-      <div className="flex lg:space-x-2 w-full h-full">
-        <div className="self-center">
-          <button onClick={prevCategory} className="text-2xl">
-            <IoIosArrowBack />
-          </button>
-        </div>
-        {categoryDetails
-          .slice(currentCategory, currentCategory + 1)
-          .map((category) => (
-            <Card
-              key={category.category}
-              image={category.img}
-              service={category.category}
-              paragraph={category.categoryDescription}
-            />
-          ))}
-        <div className="self-center">
-          <button onClick={nextCategory} className="text-2xl">
-            <IoIosArrowForward />
-          </button>
-        </div>
+    <div className="flex lg:space-x-2 w-full h-full">
+      <div className="self-center">
+        <button onClick={prevCategory} className="text-2xl opacity-50 hover:opacity-100">
+          <IoIosArrowBack />
+        </button>
+      </div>
+      {categoryDetails
+        .slice(currentCategory, currentCategory + 1)
+        .map((category) => (
+          <Card
+            key={category.category}
+            image={category.img}
+            service={category.category}
+            paragraph={category.categoryDescription}
+          />
+        ))}
+      <div className="self-center">
+        <button onClick={nextCategory} className="text-2xl opacity-50 hover:opacity-100">
+          <IoIosArrowForward />
+        </button>
       </div>
     </div>
+  </div>
+  
   );
 };
 

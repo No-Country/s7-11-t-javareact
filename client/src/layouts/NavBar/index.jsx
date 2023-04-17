@@ -47,7 +47,7 @@ function NavBar() {
                   <Link to="/home">
                     <li className="flex items-center mr-3 p-3 border-b-2 border-transparent hover:border-violet-700 text-slate-900 text-body font-body transition-all duration-300">
                       <IoIosList className="mr-4 text-lg text-violet-700 hover:text-green-500" />
-                      Home
+                      Mis listas
                     </li>
                   </Link>
                   <Link to="/">
@@ -81,7 +81,8 @@ function NavBar() {
             <ul className="w-full">
               <Link to="/home">
                 <li className="flex items-center mr-3 p-3 rounded-full text-slate-900 hover:bg-slate-200 text-body font-body">
-                  <MdCategory className="mr-3.5 text-violet-700" /> Home
+                  <MdCategory className="mr-3.5 text-violet-700" />
+                  Mis listas
                 </li>
               </Link>
               <Link to="/">

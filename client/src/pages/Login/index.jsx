@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import OrangeButton from "@/components/OrangeButton";
 import InputForm from "@/components/InputForm";
+import angledUnderline from "@/assets/images/angledUnderline.png";
 import GoBack from "@/layouts/GoBack";
 import mainBg from "../../assets/images/mainBg.png";
 
@@ -33,9 +34,8 @@ const Login = ({ setIsAuthenticated, paddingTop }) => {
   };
 
   return (
-    <main className="bg-[url('../../assets/images/mainBg.png')] lg:bg-none bg-cover lg:pt-[10%]">
-      <div className="lg:hidden">
-      </div>
+    <main className="bg-[url('../../assets/images/mainBg.png')] lg:bg-none bg-cover lg:pt-[3%]">
+      <div className="lg:hidden"></div>
 
       <div className="grid justify-items-center items-center h-screen lg:h-full  bg-white bg-opacity-80 lg:bg-transparent p-4 lg:p-0">
         <div className="grid justify-items-center w-full lg:max-w-md max-w-sm px-[4%] min-w-[321px]:px-[7%] py-7 rounded-lg shadow-lg border border-gray-200 bg-white bg-opacity-90">
@@ -77,6 +77,12 @@ const Login = ({ setIsAuthenticated, paddingTop }) => {
             </div>
           </form>
         </div>
+      </div>
+      <div className="flex mt-3 self-end justify-center">
+        <img
+          className="hidden lg:block w-[26rem] lg:w-[36rem]"
+          src={angledUnderline}
+        />
       </div>
     </main>
   );
