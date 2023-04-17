@@ -10,9 +10,37 @@ const Home = () => {
     { id: 2, name: "Lista de tareas", date: "1 semana atrás" },
     { id: 2, name: "Lista de tareas", date: "1 semana atrás" },
   ];
-
+  const getStorageProducts = localStorage.getItem("selectItemState");
+  const parsedData = JSON.parse(getStorageProducts);
   return (
     <div className="z-0 mx-auto p-4 grid grid-cols-1 gap-4 h-full md:grid-cols-2 lg:grid-cols-4">
+       <div className="w-full">
+        <h1 className="text-2xl font-bold pb-5">Compras recientes express</h1>
+        {
+        parsedData === null ? <div> No data available</div> : <ul className=" w-full max-h-60 border border-b-2 border-gray-400 rounded-md overflow-x-hidden overflow-y-auto flex flex-col">
+        <div className="flex justify-between p-1">
+          <h3 className=" font-bold">Producto</h3>
+          <h3 className="font-bold">Cantidad</h3>
+        </div>
+        {parsedData
+          .reverse()
+          .slice(0, 5)
+          .map((product) => (
+            <li
+              key={product.id}
+              className="w-full flex justify-between px-2 py-1"
+            >
+              <div className="w-72 flex gap-1 justify-start items-center border-r-2 border-black">
+                <div>{product.name}</div>
+              </div>
+              <div className="w-full flex justify-end items-center gap-2 bg-[#ecf6fd]">
+                <div>{product.quantity}x</div>
+              </div>
+            </li>
+          ))}
+      </ul>
+}     
+      </div>
       <div className="col-span-full flex justify-between items-center h-full mb-6">
         <div className="flex items-center text-end h-28 w-full bg-contain bg-no-repeat bg-[url('../../assets/images/Cloud.png')]">
           <h1 className="text-center text-2xl font-bold">Listas recientes</h1>

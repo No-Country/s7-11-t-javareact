@@ -10,6 +10,7 @@ const Register = () => {
     register,
     handleSubmit,
     formState: { errors },
+    getValues
   } = useForm();
 
   const onSubmit = (data) => {
@@ -75,45 +76,30 @@ const Register = () => {
               label="Confirmar contraseña"
               placeholder="Confirmar contraseña"
               type="password"
-              register={register("confirm-password", {
+              register={register("confirmPassword", {
                 required: "Confirme su contraseña",
                 minLength: {
                   value: 6,
-                  message: "La contraseñas deben tener más de 6 caracteres",
+                  message: "La contraseña debe tener al menos 6 caracteres",
                 },
                 validate: (value) =>
                   value === getValues("password") ||
                   "Las contraseñas no coinciden",
               })}
-              errorType={errors["confirm-password"]}
-              errorMessage={errors["confirm-password"]?.message}
+              errorType={errors.confirmPassword}
+              errorMessage={errors.confirmPassword?.message}
             />
 
             <div className="flex flex-col justify-center">
               <OrangeButton type="submit" text="Registrarse" />
-              <div className="lg:hidden">
-                <div className="flex flex-wrap mt-[4%] text-center">
-                  ¿Ya estás registrado?
-                  <Link
-                    className="text-blue-500 hover:text-blue-700 ml-1 lg:ml-4"
-                    to="/login"
-                  >
-                    Iniciar sesión
-                  </Link>
-                </div>
-                <div />
-              </div>
-              <div className="hidden lg:block">
-                <div className="flex flex-wrap mt-[4%] text-center">
-                  ¿Ya estás registrado?
-                  <Link
-                    className="text-blue-500 hover:text-blue-700 ml-1 lg:ml-4"
-                    to="/"
-                  >
-                    Iniciar sesión
-                  </Link>
-                </div>
-                <div />
+              <div className="flex flex-wrap mt-[4%] text-center">
+                ¿Ya estás registrado?
+                <Link
+                  className="text-blue-500 hover:text-blue-700 ml-1 lg:ml-4"
+                  to="/"
+                >
+                  Iniciar sesión
+                </Link>
               </div>
             </div>
           </form>
