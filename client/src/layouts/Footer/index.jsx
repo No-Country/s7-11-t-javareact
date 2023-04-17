@@ -2,7 +2,7 @@ import React from "react";
 import { FaWhatsapp, FaDiscord, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => (
-  <footer className="bg-orange-500  text-white border-2 border-gradient-to-b from-gray-400 to-orange-500 w-full">
+  <footer className="bg-orange-500  text-white border-2 border-gradient-to-b from-gray-400 to-orange-500 w-full max-[411px]:hidden">
     <div className="flex flex-col justify-items-end lg:flex-row lg:justify-around mx-auto pt-3 lg:py-6 px-2 sm:px-4 md:px-6 lg:px-10">
       <div className="lg:grid lg:grid-cols-3 lg:gap-8">
         <div className="footer-widget hidden lg:block lg:h-full">

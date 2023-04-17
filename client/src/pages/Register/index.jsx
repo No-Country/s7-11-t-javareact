@@ -23,7 +23,7 @@ const Register = () => {
         backgroundImage: `url(${mainBg})`,
       }}
     >
-            <div
+      <div
         className="grid justify-items-center items-center h-full p-4 "
         style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
       >
@@ -91,14 +91,29 @@ const Register = () => {
 
             <div className="flex flex-col justify-center">
               <OrangeButton type="submit" text="Registrarse" />
-              <div className="flex flex-wrap mt-[4%] text-center">
-                ¿Ya estás registrado?
-                <Link
-                  className="text-blue-500 hover:text-blue-700 ml-1 lg:ml-4"
-                  to="/"
-                >
-                  Iniciar sesión
-                </Link>
+              <div className="lg:hidden">
+                <div className="flex flex-wrap mt-[4%] text-center">
+                  ¿Ya estás registrado?
+                  <Link
+                    className="text-blue-500 hover:text-blue-700 ml-1 lg:ml-4"
+                    to="/login"
+                  >
+                    Iniciar sesión
+                  </Link>
+                </div>
+                <div />
+              </div>
+              <div className="hidden lg:block">
+                <div className="flex flex-wrap mt-[4%] text-center">
+                  ¿Ya estás registrado?
+                  <Link
+                    className="text-blue-500 hover:text-blue-700 ml-1 lg:ml-4"
+                    to="/"
+                  >
+                    Iniciar sesión
+                  </Link>
+                </div>
+                <div />
               </div>
             </div>
           </form>

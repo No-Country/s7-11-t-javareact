@@ -1,6 +1,6 @@
 const ListCard = ({ title, subtitle }) => {
   return (
-    <div className="flex flex-col max-w-[22rem] max-270px]:h-[9.5rem] min-270px]:h-[9rem]">
+    <div className="flex flex-col max-w-[22rem] h-28">
       <div
         className={`flex flex-col justify-center p-[2%] h-full bg-gray-50 drop-shadow-md rounded-2xl text-center text-neutral-900`}
       >

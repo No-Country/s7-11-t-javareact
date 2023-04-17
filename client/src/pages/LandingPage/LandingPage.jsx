@@ -6,9 +6,8 @@ import Logo from "../../assets/images/Logo.png";
 import Compra from "@/assets/images/Compra.png";
 import OrangeButton from "@/components/OrangeButton";
 import Listo from "@/assets/images/Listo.png";
+import compraListo from "@/assets/images/compraListo.png";
 import angledUnderline from "@/assets/images/angledUnderline.png";
-import orangeSub from "@/assets/images/orangeSub.png";
-import NavBar from "@/layouts/NavBar";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -25,23 +24,27 @@ const LandingPage = () => {
       <div className="lg:gap-0 lg:grid lg:grid-cols-2 h-full bg-white bg-opacity-80  lg:pl-6">
         <div className="flex flex-col lg:flex-row lg:self-start lg:h-full items-center text-center">
           {/*  div 1 */}
-          <div className="lg:hidden w-24 h-24 rounded-full shadow-md">
-            <div className="w-full h-full rounded-full bg-white flex items-center justify-center shadow-lg border-4 border-gray-200">
-              <img
-                src={Logo}
-                alt="Logo"
-                className="rounded-full object-contain w-full h-full"
-              />
-            </div>
+          <div className="lg:hidden w-full h-[8rem] rounded-full shadow-md">
+            <img
+              src={Logo}
+              alt="Logo"
+              className=" object-contain h-full  w-full "
+            />
           </div>
           <div className="flex flex-wrap pt-2 sm:py-4">
             <img src={Compra} className="h-[5rem] hidden lg:block" />
             <img src={Listo} className="h-auto hidden lg:block" />
             <div className="flex-col m-auto">
+              {/* <img
+                className="max-[411px]:hidden lg:hidden w-[24rem] m-auto"
+                src={angledUnderline}
+              /> */}
               <p className="text-2xl tracking-2 font-damion">
                 La comunidad de compradores eficientes
-              </p>          <img className="w-[17rem] py-2 m-auto" src={angledUnderline} />
-
+              </p>
+              <div className="underline relative mx-3 min-[411px]:py-3 lg:hidden">
+                <div className="absolute left-0 bottom-0 w-full h-1 bg-gradient-to-r from-transparent via-orange-300 to-transparent"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -50,23 +53,19 @@ const LandingPage = () => {
           <h2 className="text-2xl text-center tracking-2 font-damion">
             ¡Bienvenido!
           </h2>
-          {/* <p className="text-2xl tracking-2 font-damion">
-          ¡Bienvenido! </p> */}
           <Login />
-          <img
-            className="hidden lg:block w-[26rem] lg:w-[36rem]"
-            src={angledUnderline}
-          />
         </div>
         <div className="flex flex-col items-center justify-center">
           {/*  div 3 */}
           <Carousel />
         </div>
-
+        <div className="underline relative mx-3 lg:hidden">
+          <div className="absolute left-0 bottom-0 w-full h-1 bg-gradient-to-r from-transparent via-orange-300 to-transparent"></div>
+        </div>
         <div className="px-4 pb-4 w-full flex flex-col gap-4 text-center ">
           {/*  div 4 */}
+
           <div>
-            {" "}
             <div className="flex flex-col text-center gap-4 sm:gap-6 lg:m-auto pt-4 sm:px-[14%] md:px-[30%]">
               <p className="m-auto">Ahorra tiempo en tus compras y</p>
               <h2 className="text-2xl font-bold">¡Regístrate hoy!</h2>
