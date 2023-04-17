@@ -14,6 +14,7 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 @RestController
 @RequestMapping("/api/v1/requirement")
+@CrossOrigin("*")
 public class RequirementController {
     @Autowired
     RequirementServiceImpl requirementService;

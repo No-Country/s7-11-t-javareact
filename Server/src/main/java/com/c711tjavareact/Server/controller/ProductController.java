@@ -12,6 +12,7 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 @RestController
 @RequestMapping("/api/v1/product")
+@CrossOrigin("*")
 public class ProductController {
     @Autowired
     ProductServiceImpl productService;
