@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -81,13 +82,9 @@ public class CategoryServiceImpl implements ICategoryService {
 
         categoryList.forEach(category -> {
             if (category.isStatus()) {
-                List<Product> productList = new ArrayList<>();
-                List<Product> categoryProducts = category.getProducts();
-                categoryProducts.forEach(product -> {
-                    if (product.isStatus()) {
-                        productList.add(product);
-                    }
-                });
+                List<Product> productList = category.getProducts().stream()
+                    .filter(Product::isStatus)
+                    .collect(Collectors.toList());
                 category.setProducts(productList);
                 CategoryResponseDto categoryResponseDto = categoryMapper.entityToDto(category);
                 responseCategoryList.add(categoryResponseDto);
