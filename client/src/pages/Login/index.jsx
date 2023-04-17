@@ -5,9 +5,11 @@ import InputForm from "@/components/InputForm";
 import angledUnderline from "@/assets/images/angledUnderline.png";
 import GoBack from "@/layouts/GoBack";
 import mainBg from "../../assets/images/mainBg.png";
+import { useState } from "react";
 
-const Login = ({ setIsAuthenticated, paddingTop }) => {
+const Login = ({setIsAuthenticated,isAuthenticated, paddingTop }) => {
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
   const controlHomeClick = () => {
     navigate("/home");
   };
@@ -22,9 +24,13 @@ const Login = ({ setIsAuthenticated, paddingTop }) => {
       data.userName === "user@example.com" &&
       data.password === "password123"
     ) {
-      setIsAuthenticated(true);
+      //setIsAuthenticated(true);
+      controlHomeClick();
+    } else {
+      setErrorMessage("Nombre de usuario o contraseña incorrectos"); // actualiza el mensaje de error si las credenciales son incorrectas
     }
   };
+
 
   const ValidateLogin = () => {
     if (userName === "user@example.com" && password === "password123") {
@@ -71,9 +77,13 @@ const Login = ({ setIsAuthenticated, paddingTop }) => {
                 }
                 type="password"
               />
+                {errorMessage && (
+               <div className="w-full text-red-500 text-xs flex justify-center items-center">{errorMessage}</div>
+            )}
             </div>
+          
             <div className="px-6">
-              <OrangeButton text="Iniciar Sesion" onClick={controlHomeClick} />
+              <OrangeButton text="Iniciar Sesion" type="submit" />
             </div>
           </form>
         </div>
