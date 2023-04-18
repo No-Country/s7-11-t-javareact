@@ -20,21 +20,21 @@ function ProductListItem({
         }}
         onClick={() => toggleProductDone(product)}
         className={`${checked ? "border-primary-50" : "border-primary-400"}
-           border-l-8 cursor-pointer grid grid-cols-[auto,1fr,auto] items-stretch flex-grow`}
+            cursor-pointer  items-stretch flex-grow flex `}
       >
         {checked ? (
-          <MdCheckCircle className="mx-3 my-auto text-xl text-emerald-500" />
+          <MdCheckCircle className="mx-3 my-auto text-xl text-emerald-500 hidden md:inline" />
         ) : (
-          <MdShoppingCart className="mx-3 my-auto text-xl" />
+          <MdShoppingCart className="mx-3 my-auto text-xl hidden md:inline" />
         )}
         <div
           className={`py-1 px-2 w-full rounded-l-lg flex flex-row flex-wrap justify-between
-          ${checked ? "bg-gray-50" : "bg-primary-50"}`}
+          ${checked ? "bg-gray-50" : "bg-secondary-50"}`}
         >
           <h4
             className={`${
               checked ? "line-through decoration-red-600" : ""
-            } my-auto`}
+            } my-auto ml-2`}
           >
             {name}
           </h4>

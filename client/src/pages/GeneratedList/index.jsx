@@ -109,7 +109,7 @@ function GeneratedList() {
       <div className="flex flex-col gap-4 " role="list">
         {groupProductsByCategory(productsList).map(([category, products]) => (
           <div key={category} role="listitem">
-            <h3 className="inline-block  border-b-4 border-gray-200 mb-6 font-semibold">
+            <h3 className="inline-block  border-b-4 border-secondary-500 mb-6 font-semibold">
               {CATEGORIES_DATA.find((c) => c.id == category)?.name}
             </h3>
             <ul className="flex flex-col gap-2">
