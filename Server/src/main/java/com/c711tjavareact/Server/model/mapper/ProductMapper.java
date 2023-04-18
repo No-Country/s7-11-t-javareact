@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProductMapper {
 
-    public Product dtoToEntity(ProductRequestDto Request, Category category){
+    public Product dtoToEntity(ProductRequestDto Request, Category category) {
 
         Product product = new Product();
 
@@ -31,10 +31,10 @@ public class ProductMapper {
         responseDto.setQuantity(entity.getQuantity());
         responseDto.setDiscount(entity.getDiscount());
 
-        return  responseDto;
+        return responseDto;
     }
 
-    public Product updateProduct(Product product, ProductRequestDto requestDto){
+    public Product updateProduct(Product product, ProductRequestDto requestDto) {
 
         product.setName(requestDto.getName());
         product.setPrice(requestDto.getPrice());
@@ -44,7 +44,7 @@ public class ProductMapper {
         return product;
     }
 
-    public Product updateSoftDelete(Product entity, boolean status){
+    public Product updateSoftDelete(Product entity, boolean status) {
         entity.setStatus(status);
         return entity;
     }
