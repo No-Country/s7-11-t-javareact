@@ -2,15 +2,18 @@ package com.c711tjavareact.Server.service;
 
 import com.c711tjavareact.Server.model.dto.request.ProductRequestDto;
 import com.c711tjavareact.Server.model.dto.response.ProductResponseDto;
-import com.c711tjavareact.Server.model.entity.Product;
+
 import java.util.List;
+
+import com.c711tjavareact.Server.security.util.Mensaje;
 import org.springframework.http.ResponseEntity;
 
 public interface IProductService {
-	ResponseEntity<ProductRequestDto>createProduct(ProductRequestDto productRequestDto, Long Id);
-	void deleteProduct(Long id);
+    ResponseEntity<Mensaje> createProduct(ProductRequestDto productRequestDto, Long Id);
 
-	ResponseEntity<ProductResponseDto> updateProduct(Long id, ProductRequestDto productRequestDto);
+    void deleteProduct(Long id);
 
-	ResponseEntity<List<ProductResponseDto>> findProducts();
+    ResponseEntity<ProductResponseDto> updateProduct(Long id, ProductRequestDto productRequestDto);
+
+    ResponseEntity<List<ProductResponseDto>> findProducts();
 }
