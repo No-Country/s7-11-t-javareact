@@ -7,7 +7,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { signInUser } from "@/api/access";
 import { useState } from "react";
 
-const Login = ({setIsAuthenticated,isAuthenticated}) => {
+const Login = ({ setIsAuthenticated, isAuthenticated }) => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -19,20 +19,15 @@ const Login = ({setIsAuthenticated,isAuthenticated}) => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    setErrorMessage("");
     try {
-      const response = await signInUser(data);
-      if (response.status === 200) {
-        setIsAuthenticated(true);
-        navigate("/home");
-      } else {
-        setErrorMessage("Usuario o contraseña incorrectos");
-      }
+      await signInUser(data);
+      navigate("/home");
     } catch (error) {
       console.error(error);
       setErrorMessage("Hubo un error al iniciar sesión");
     }
   };
-  
 
   return (
     <main className="bg-[url('../../assets/images/mainBg.png')] lg:bg-none bg-cover lg:pt-[3%]">
@@ -69,20 +64,21 @@ const Login = ({setIsAuthenticated,isAuthenticated}) => {
                   "Este campo es requerido"
                 }
                 type={showPassword ? "text" : "password"}
-
               />
-                {errorMessage && (
-               <div className="w-full text-red-500 text-xs flex justify-center items-center">{errorMessage}</div>
-            )}
-             <button
-        type="button"
-        onClick={() => setShowPassword(!showPassword)}
-        className="absolute right-0 top-2 bottom-0 px-2 flex justify-center items-center text-gray-500 focus:outline-none"
-        >
-        {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
-      </button>
+              {errorMessage && (
+                <div className="w-full text-red-500 text-xs flex justify-center items-center">
+                  {errorMessage}
+                </div>
+              )}
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-0 top-2 bottom-0 px-2 flex justify-center items-center text-gray-500 focus:outline-none"
+              >
+                {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+              </button>
             </div>
-          
+
             <div className="px-6">
               <OrangeButton text="Iniciar Sesion" type="submit" />
             </div>
