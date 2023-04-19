@@ -18,6 +18,7 @@ import java.util.Optional;
 
 import java.util.stream.Collectors;
 import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,15 +43,14 @@ public class CategoryServiceImpl implements ICategoryService {
 
         Requirement requirement = requirementRepository.findById(idRequirement).orElse(null);
 
-        if( requirement != null) {
+        if (requirement != null) {
             Category category1 = categoryMapper.dtoToEntity(categoryRequestDto, requirement);
             category1 = categoryRepository.save(category1);
             requirement.getCategory().add(category1);
-            return new ResponseEntity<>(new Mensaje("create Category"), HttpStatus.CREATED);
+            return new ResponseEntity(category1, HttpStatus.CREATED);
         } else {
             throw new GeneralException("can't create Category", HttpStatus.BAD_REQUEST);
         }
-
     }
 
     @Override
@@ -99,8 +99,8 @@ public class CategoryServiceImpl implements ICategoryService {
         categoryList.forEach(category -> {
             if (category.isStatus()) {
                 List<Product> productList = category.getProducts().stream()
-                    .filter(Product::isStatus)
-                    .collect(Collectors.toList());
+                        .filter(Product::isStatus)
+                        .collect(Collectors.toList());
                 category.setProducts(productList);
                 CategoryResponseDto categoryResponseDto = categoryMapper.entityToDto(category);
                 responseCategoryList.add(categoryResponseDto);
