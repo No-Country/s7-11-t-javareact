@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { BlobProvider, PDFViewer } from "@react-pdf/renderer";
 
-import { MdEdit } from "react-icons/md";
+import { MdEdit, MdPictureAsPdf } from "react-icons/md";
+import { ImWhatsapp } from "react-icons/im";
 
+import ListDocument from "@/components/ListDocument";
 import ProductListItem from "@/components/ProductListItem";
 
 const CATEGORIES_DATA = [
@@ -103,9 +106,55 @@ function GeneratedList() {
       )
     );
 
+  const getWAText = ({ listName, products }) => {
+    const text = `*Lista de compras* - ${listName}
+    ${products.map((product) => `%0a-${product.name} - ${product.price}`)}
+    `;
+
+    return text;
+  };
+
   return (
     <main className="w-11/12 max-w-7xl mx-auto p-5">
-      <h1 className="text-2xl my-6">Lista Generada</h1>
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl my-6 ">Lista Generada</h1>
+        <span className="flex gap-2">
+          <a
+            href={`https://wa.me/?text=${getWAText({
+              listName: "Lista de marzo",
+              products: PRODUCTS,
+            })}`}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="bg-green-400 hover:bg-green-500 transition
+             p-3 grid place-items-center text-xl rounded-full text-white"
+            title="WA Share"
+          >
+            <ImWhatsapp />
+          </a>
+          <BlobProvider
+            document={
+              <ListDocument listName="Lista de Marzo" products={PRODUCTS} />
+            }
+          >
+            {({ url }) => (
+              <a
+                href={url}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="bg-red-600 hover:bg-red-700 transition
+                p-3 grid place-items-center text-xl rounded-full text-white"
+                title="PDF"
+              >
+                <MdPictureAsPdf />
+              </a>
+            )}
+          </BlobProvider>
+        </span>
+      </div>
+      {/* <PDFViewer className="w-full h-screen">
+        <ListDocument listName="Lista de Marzo" products={PRODUCTS} />
+      </PDFViewer> */}
       <div className="flex flex-col gap-4 " role="list">
         {groupProductsByCategory(productsList).map(([category, products]) => (
           <div key={category} role="listitem">
