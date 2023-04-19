@@ -11,7 +11,7 @@ public interface IRequirementService {
 
     ResponseEntity<Mensaje> createRequirement(RequirementRequestDto requirementRequestDto);
 
-    void deleteRequirement (Long id);
+    void deleteRequirement(Long id);
 
     ResponseEntity<RequirementResponseDto> updateRequirement(Long id, RequirementRequestDto requirementRequestDto);
 

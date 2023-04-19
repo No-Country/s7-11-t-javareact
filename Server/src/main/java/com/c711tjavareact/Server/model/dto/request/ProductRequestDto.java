@@ -1,9 +1,8 @@
 package com.c711tjavareact.Server.model.dto.request;
 
-import com.c711tjavareact.Server.model.entity.Requirement;
 import java.io.Serializable;
-import java.util.List;
 import javax.validation.constraints.NotBlank;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,10 +14,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductRequestDto implements Serializable {
-  @NotBlank(message = "Not Empty")
-  private String name;
-  private float price;
-  private int quantity;
-  private int discount;
-  private List<Requirement> requirementList;
+    @NotBlank(message = "Not Empty")
+    private String name;
+    private float price;
+    private int quantity;
+    private int discount;
 }

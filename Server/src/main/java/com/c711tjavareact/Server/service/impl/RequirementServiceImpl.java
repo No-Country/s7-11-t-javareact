@@ -3,11 +3,15 @@ package com.c711tjavareact.Server.service.impl;
 import com.c711tjavareact.Server.exceptions.GeneralException;
 import com.c711tjavareact.Server.model.dto.request.RequirementRequestDto;
 import com.c711tjavareact.Server.model.dto.response.RequirementResponseDto;
+import com.c711tjavareact.Server.model.entity.Category;
 import com.c711tjavareact.Server.model.entity.Requirement;
 import com.c711tjavareact.Server.model.mapper.RequirementMapper;
 import com.c711tjavareact.Server.repository.RequirementRepository;
 import com.c711tjavareact.Server.security.util.Mensaje;
 import com.c711tjavareact.Server.service.IRequirementService;
+
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +30,7 @@ public class RequirementServiceImpl implements IRequirementService {
 
     @Override
     public ResponseEntity<Mensaje> createRequirement(RequirementRequestDto requirementRequestDto) {
-        Requirement requirement1 = requirementMapper.entityToDto(requirementRequestDto);
+        Requirement requirement1 = requirementMapper.dtoToEntity(requirementRequestDto);
         requirementRepository.save(requirement1);
         return new ResponseEntity<>(new Mensaje("create Requirement"), HttpStatus.CREATED);
     }
@@ -51,7 +55,7 @@ public class RequirementServiceImpl implements IRequirementService {
         if (requirement.isPresent()) {
             requirement1 = requirementMapper.updateRequirement(requirement.get(), requirementRequestDto);
             requirementRepository.save(requirement1);
-            requirementResponseDto = requirementMapper.dtoToEntity(requirement1);
+            requirementResponseDto = requirementMapper.entityToDto(requirement1);
             return new ResponseEntity<>(requirementResponseDto, HttpStatus.OK);
         } else {
             throw new GeneralException("No se encontro la lista", HttpStatus.BAD_REQUEST);
@@ -65,7 +69,11 @@ public class RequirementServiceImpl implements IRequirementService {
 
         requirementList.forEach(requirement -> {
             if (requirement.isStatus()) {
-                RequirementResponseDto requirementResponseDto = requirementMapper.dtoToEntity(requirement);
+                List<Category> categoryList = requirement.getCategory().stream()
+                        .filter(Category::isStatus)
+                        .collect(Collectors.toList());
+                requirement.setCategory(categoryList);
+                RequirementResponseDto requirementResponseDto = requirementMapper.entityToDto(requirement);
                 responseRequirementList.add(requirementResponseDto);
             }
         });
