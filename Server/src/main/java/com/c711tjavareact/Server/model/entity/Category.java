@@ -1,8 +1,8 @@
 package com.c711tjavareact.Server.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import static javax.persistence.FetchType.EAGER;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,7 +27,11 @@ public class Category {
 
     @Column(name = "status")
     private boolean status = true;
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "category")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "category")
     @JsonIgnoreProperties("category")
     List<Product> products = new ArrayList<>();
+
+    @ManyToOne(fetch = EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "requirement_id")
+    Requirement requirement;
 }

@@ -1,19 +1,48 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import OrangeButton from "../../components/OrangeButton";
 import InputForm from "../../components/InputForm";
 import GoBack from "@/layouts/GoBack";
+
 import mainBg from "@/assets/images/mainBg.png";
+import smallLogo from "@/assets/images/smallLogo.png";
+
+import { signUpUser } from "@/api/access";
 
 const Register = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    getValues,
   } = useForm();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
+
+    try {
+      setIsLoading(true);
+
+      const payload = {
+        nombre: data.name,
+        nombreUsuario: data.username,
+        email: data.email,
+        password: data.password,
+      };
+      const response = await signUpUser(payload);
+      console.log(response);
+      alert("Registro Exitoso");
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      console.log(error?.response);
+      alert(`Error al registrar ${error?.response?.data?.mensaje}`);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -31,7 +60,17 @@ const Register = () => {
           <h1 className="text-2xl font-bold mb-4">Registro</h1>
           <form className="w-full px-[10%]" onSubmit={handleSubmit(onSubmit)}>
             <InputForm
-              label="Nombre de usuario"
+              label="Nombre"
+              placeholder="Escribe tu nombre"
+              type="text"
+              register={register("name", {
+                required: "Por favor, ingresa tu nombre",
+              })}
+              errorType={errors.username}
+              errorMessage={errors.username?.message}
+            />
+            <InputForm
+              label="Usuario"
               placeholder="Escribe tu usuario"
               type="text"
               register={register("username", {
@@ -75,45 +114,42 @@ const Register = () => {
               label="Confirmar contraseña"
               placeholder="Confirmar contraseña"
               type="password"
-              register={register("confirm-password", {
+              register={register("confirmPassword", {
                 required: "Confirme su contraseña",
                 minLength: {
                   value: 6,
-                  message: "La contraseñas deben tener más de 6 caracteres",
+                  message: "La contraseña debe tener al menos 6 caracteres",
                 },
                 validate: (value) =>
                   value === getValues("password") ||
                   "Las contraseñas no coinciden",
               })}
-              errorType={errors["confirm-password"]}
-              errorMessage={errors["confirm-password"]?.message}
+              errorType={errors.confirmPassword}
+              errorMessage={errors.confirmPassword?.message}
             />
 
-            <div className="flex flex-col justify-center">
-              <OrangeButton type="submit" text="Registrarse" />
-              <div className="lg:hidden">
-                <div className="flex flex-wrap mt-[4%] text-center">
-                  ¿Ya estás registrado?
-                  <Link
-                    className="text-blue-500 hover:text-blue-700 ml-1 lg:ml-4"
-                    to="/login"
-                  >
-                    Iniciar sesión
-                  </Link>
-                </div>
-                <div />
+            {isLoading ? (
+              <div className="overflow-hidden relative">
+                <img
+                  src={smallLogo}
+                  className="relative h-14 sm:h-22 w-auto m-auto animate-spinning-cart"
+                />
+                <p className="absolute top-0 left-0 text-center w-full">
+                  Cargando...
+                </p>
               </div>
-              <div className="hidden lg:block">
-                <div className="flex flex-wrap mt-[4%] text-center">
-                  ¿Ya estás registrado?
-                  <Link
-                    className="text-blue-500 hover:text-blue-700 ml-1 lg:ml-4"
-                    to="/"
-                  >
-                    Iniciar sesión
-                  </Link>
-                </div>
-                <div />
+            ) : (
+              <OrangeButton type="submit" text="Registrarse" />
+            )}
+            <div className="flex flex-col justify-center">
+              <div className="flex flex-wrap mt-[4%] text-center">
+                ¿Ya estás registrado?
+                <Link
+                  className="text-blue-500 hover:text-blue-700 ml-1 lg:ml-4"
+                  to="/"
+                >
+                  Iniciar sesión
+                </Link>
               </div>
             </div>
           </form>

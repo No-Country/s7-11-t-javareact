@@ -9,7 +9,7 @@ import Listo from "@/assets/images/Listo.png";
 import compraListo from "@/assets/images/compraListo.png";
 import angledUnderline from "@/assets/images/angledUnderline.png";
 
-const LandingPage = () => {
+const LandingPage = ({ setIsAuthenticated, isAuthenticated }) => {
   const navigate = useNavigate();
 
   const controlRegisterClick = () => {
@@ -53,7 +53,10 @@ const LandingPage = () => {
           <h2 className="text-2xl text-center tracking-2 font-damion">
             ¡Bienvenido!
           </h2>
-          <Login />
+          <Login
+            setIsAuthenticated={setIsAuthenticated}
+            isAuthenticated={isAuthenticated}
+          />
         </div>
         <div className="flex flex-col items-center justify-center">
           {/*  div 3 */}

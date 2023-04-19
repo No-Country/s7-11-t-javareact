@@ -4,52 +4,58 @@ import com.c711tjavareact.Server.model.dto.request.CategoryRequestDto;
 import com.c711tjavareact.Server.model.dto.response.CategoryResponseDto;
 import com.c711tjavareact.Server.model.dto.response.ProductResponseDto;
 import com.c711tjavareact.Server.model.entity.Category;
+import com.c711tjavareact.Server.model.entity.Requirement;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CategoryMapper {
 
-  @Autowired
-  private ProductMapper productMapper;
+    @Autowired
+    private ProductMapper productMapper;
 
-  public Category dtoToEntity(CategoryRequestDto Request) {
-    Category category = new Category();
+    public Category dtoToEntity(CategoryRequestDto Request, Requirement requirement) {
+        Category category = new Category();
 
-    category.setName(Request.getName());
-    category.setProducts(Request.getProducts());
+        category.setName(Request.getName());
+        category.setProducts(Request.getProducts());
+        category.setRequirement(requirement);
 
-    return category;
-  }
+        return category;
+    }
 
-  public CategoryResponseDto entityToDto(Category entity) {
-    CategoryResponseDto categoryResponseDto = new CategoryResponseDto();
-    categoryResponseDto.setId(entity.getId());
-    categoryResponseDto.setName(entity.getName());
-    List<ProductResponseDto> listProductDto = new ArrayList<>();
+    public CategoryResponseDto entityToDto(Category entity) {
+        CategoryResponseDto categoryResponseDto = new CategoryResponseDto();
 
-    entity.getProducts().forEach(product -> {
-      ProductResponseDto productResponseDto = productMapper.entityToDto(product);
-      listProductDto.add(productResponseDto);
-    });
+        categoryResponseDto.setId(entity.getId());
+        categoryResponseDto.setName(entity.getName());
 
-    categoryResponseDto.setProducts(listProductDto);
+        List<ProductResponseDto> listProductDto = new ArrayList<>();
+        entity.getProducts().forEach(product -> {
+            ProductResponseDto productResponseDto = productMapper.entityToDto(product);
+            listProductDto.add(productResponseDto);
+        });
 
-    return categoryResponseDto;
-  }
+        categoryResponseDto.setProducts(listProductDto);
 
-  public Category updateCategory(Category category, CategoryRequestDto requestDto){
+        return categoryResponseDto;
+    }
 
-    category.setName(requestDto.getName());
-    category.setProducts(requestDto.getProducts());
+    public Category updateCategory(Category category, CategoryRequestDto requestDto) {
 
-    return category;
+        category.setName(requestDto.getName());
+        category.setProducts(requestDto.getProducts());
 
-  }
-  public Category updateSoftDelete(Category entity, boolean status){
-    entity.setStatus(status);
-    return entity;
-  }
+        return category;
+
+    }
+
+    public Category updateSoftDelete(Category entity, boolean status) {
+        entity.setStatus(status);
+        return entity;
+    }
 }

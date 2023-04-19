@@ -15,35 +15,33 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 @RestController
 @RequestMapping("/api/v1/requirement")
+@CrossOrigin("*")
 public class RequirementController {
-    @Autowired
-    RequirementServiceImpl requirementService;
+	@Autowired
+	RequirementServiceImpl requirementService;
 
-    @PostMapping("/create-requirement")
-    public ResponseEntity<Mensaje> createRequirement( @Valid  @RequestBody RequirementRequestDto requirementRequestDto){
-        ResponseEntity<Mensaje> create = requirementService.createRequirement(requirementRequestDto);
+	@PostMapping("/create-requirement")
+	public ResponseEntity<Mensaje> createRequirement(@Valid @RequestBody RequirementRequestDto requirementRequestDto) {
+		ResponseEntity<Mensaje> create = requirementService.createRequirement(requirementRequestDto);
+		return new ResponseEntity<Mensaje>(create.getBody(), create.getStatusCode());
+	}
 
-        return new ResponseEntity<Mensaje>(create.getBody(),create.getStatusCode());
-    }
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<Void> deleteRequirement(@PathVariable Long id) {
+		requirementService.deleteRequirement(id);
+		return ResponseEntity.status(NO_CONTENT).build();
+	}
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteRequirement(@PathVariable Long id){
-        requirementService.deleteRequirement(id);
-        return ResponseEntity.status(NO_CONTENT).build();
-    }
+	@PutMapping("/update/{id}")
+	public ResponseEntity<RequirementResponseDto> updateRequirement(@PathVariable Long id,
+																	@RequestBody RequirementRequestDto requirementRequestDto) {
+		ResponseEntity<RequirementResponseDto> update = requirementService.updateRequirement(id, requirementRequestDto);
+		return new ResponseEntity<RequirementResponseDto>(update.getBody(), update.getStatusCode());
+	}
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<RequirementResponseDto> updateRequirement(@PathVariable Long id,
-                                                                 @RequestBody RequirementRequestDto requirementRequestDto) {
-        ResponseEntity<RequirementResponseDto> update = requirementService.updateRequirement(id, requirementRequestDto);
-
-        return new ResponseEntity<RequirementResponseDto>(update.getBody(), update.getStatusCode());
-    }
-
-    @GetMapping("/findRequirements")
-    public ResponseEntity<List<RequirementResponseDto>> findRequirements(){
-        ResponseEntity<List<RequirementResponseDto>> findRequirements = requirementService.findRequirements();
-
-        return new ResponseEntity<List<RequirementResponseDto>>(findRequirements.getBody(), findRequirements.getStatusCode());
-    }
+	@GetMapping("/findRequirements")
+	public ResponseEntity<List<RequirementResponseDto>> findRequirements() {
+		ResponseEntity<List<RequirementResponseDto>> findRequirements = requirementService.findRequirements();
+		return new ResponseEntity<List<RequirementResponseDto>>(findRequirements.getBody(), findRequirements.getStatusCode());
+	}
 }

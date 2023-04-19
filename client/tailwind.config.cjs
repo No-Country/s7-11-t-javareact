@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors')
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -16,10 +17,25 @@ module.exports = {
         '55vh': '55vh', // definir el valor de 120 como 30rem
       },
       colors: {
-        //picton-blue
-        
+        //neon-carrot
         primary: {
           DEFAULT: "#FB923C",
+          50: "#FFF7F0",
+          100: "#FEEBDC",
+          200: "#FDD5B4",
+          300: "#FDBF8C",
+          400: "#FCA864",
+          500: "#FB923C",
+          600: "#FA7305",
+          700: "#C35A04",
+          800: "#8C4103",
+          900: "#552702",
+          950: "#391A01",
+        },
+        secondary: colors.violet,
+        //picton-blue 
+        tertiary: {
+          DEFAULT: "#59B0F0",
           50: "#ECF6FD",
           100: "#DCEEFC",
           200: "#BBDFF9",
