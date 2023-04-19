@@ -27,6 +27,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class MainSecurity extends WebSecurityConfigurerAdapter {
 
+	private static final String[] AUTH_WHITE_LIST = {
+			"/v3/api-docs/**",
+			"/swagger-ui/**",
+			"/v2/api-docs/**",
+			"/swagger-resources/**"
+	};
+
 	@Autowired
 	UserDetailsServiceImpl userDetailsService;
 
@@ -71,6 +78,9 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable()
 				.authorizeRequests()
 				.antMatchers("/auth/**").permitAll()
+				.and()
+				.authorizeRequests()
+				.antMatchers(AUTH_WHITE_LIST).permitAll()
 				.anyRequest().authenticated()
 				.and()
 				.exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
@@ -88,5 +98,4 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
 				"/swagger-ui.html",
 				"/webjars/**");
 	}
-
 }
