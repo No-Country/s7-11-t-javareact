@@ -47,7 +47,7 @@ public class CategoryServiceImpl implements ICategoryService {
             Category category1 = categoryMapper.dtoToEntity(categoryRequestDto, requirement);
             category1 = categoryRepository.save(category1);
             requirement.getCategory().add(category1);
-            return new ResponseEntity<>(new Mensaje("create Product"), HttpStatus.CREATED);
+            return new ResponseEntity<>(new Mensaje("create Category"), HttpStatus.CREATED);
         } else {
             throw new GeneralException("can't create Category", HttpStatus.BAD_REQUEST);
         }
