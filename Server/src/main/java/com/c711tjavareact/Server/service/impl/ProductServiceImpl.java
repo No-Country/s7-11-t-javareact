@@ -8,9 +8,12 @@ import com.c711tjavareact.Server.model.entity.Product;
 import com.c711tjavareact.Server.model.mapper.ProductMapper;
 import com.c711tjavareact.Server.repository.CategoryRepository;
 import com.c711tjavareact.Server.repository.ProductRepository;
+import com.c711tjavareact.Server.security.util.Mensaje;
 import com.c711tjavareact.Server.service.IProductService;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,23 +32,19 @@ public class ProductServiceImpl implements IProductService {
     @Autowired
     CategoryRepository categoryRepository;
 
-
     @Override
     @Transactional /*Permite que no se escriba de manera explicita que queremos guardar las modificaciones del objeto*/
-    public ResponseEntity<ProductRequestDto> createProduct(ProductRequestDto productRequestDto, Long idCategory) {
-        try {
-            Category category = categoryRepository.findById(idCategory).orElse(null);
+    public ResponseEntity<Mensaje> createProduct(ProductRequestDto productRequestDto, Long idCategory) {
 
-            if (category != null) {
-                Product product1 = productMapper.dtoToEntity(productRequestDto, category);
-                product1 = productRepository.save(product1);
-                category.getProducts().add(product1);
-                return new ResponseEntity(product1, HttpStatus.CREATED);
-            } else {
-                throw new GeneralException("No se encontro el producto", HttpStatus.BAD_REQUEST);
-            }
-        } catch (Exception e) {
-            throw new GeneralException(e.toString(), HttpStatus.BAD_REQUEST);
+        Category category = categoryRepository.findById(idCategory).orElse(null);
+
+        if (category != null) {
+            Product product1 = productMapper.dtoToEntity(productRequestDto, category);
+            product1 = productRepository.save(product1);
+            category.getProducts().add(product1);
+            return new ResponseEntity<>(new Mensaje("create Product"), HttpStatus.CREATED);
+        } else {
+            throw new GeneralException("No se encontro el producto", HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -53,9 +52,9 @@ public class ProductServiceImpl implements IProductService {
     public void deleteProduct(Long id) {
         Optional<Product> product = productRepository.findById(id);
         Product product1;
-        if (product.get().isStatus()){
+        if (product.get().isStatus()) {
             product1 = productMapper.updateSoftDelete(product.get(), false);
-        }else {
+        } else {
             product1 = productMapper.updateSoftDelete(product.get(), true);
         }
         productRepository.save(product1);
@@ -67,7 +66,7 @@ public class ProductServiceImpl implements IProductService {
         Product product1;
         ProductResponseDto productResponseDto;
         if (product.isPresent()) {
-            product1 = productMapper.updateProduct(product.get(),productRequestDto);
+            product1 = productMapper.updateProduct(product.get(), productRequestDto);
             productRepository.save(product1);
             productResponseDto = productMapper.entityToDto(product1);
             return new ResponseEntity<>(productResponseDto, HttpStatus.OK);
@@ -82,7 +81,7 @@ public class ProductServiceImpl implements IProductService {
         List<ProductResponseDto> responseProductsList = new ArrayList<>();
 
         productsList.forEach(product -> {
-            if(product.isStatus()){
+            if (product.isStatus()) {
                 ProductResponseDto productResponseDto = productMapper.entityToDto(product);
                 responseProductsList.add(productResponseDto);
             }
