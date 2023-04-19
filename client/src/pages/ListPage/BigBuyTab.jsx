@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   MdAdd,
@@ -11,6 +11,8 @@ import {
 import { FaEdit, FaRegCheckCircle, FaTrashAlt } from "react-icons/fa";
 import { BiPlusCircle } from "react-icons/bi";
 import { HiXMark } from "react-icons/hi2";
+
+import { getCategories } from "@/api/categories";
 
 import ProductListItem from "@/components/ProductListItem";
 import NewProductForm from "./NewProductForm";
@@ -66,6 +68,18 @@ const BigBuyTab = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [productsList, setProductsList] = useState([]);
   const [showForm, setShowForm] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await getCategories();
+        console.log(response);
+        console.log("categorias->", response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
 
   const editProductName = (id, name) => {
     setProductsList(
