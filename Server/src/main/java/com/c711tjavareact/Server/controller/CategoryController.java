@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/category")
 @CrossOrigin("*")
@@ -29,9 +32,9 @@ public class CategoryController {
     @Autowired
     CategoryServiceImpl categoryService;
 
-    @PostMapping("/create-category/{idRequirement}")
-    public ResponseEntity<Mensaje> createCategory(@RequestBody CategoryRequestDto categoryRequestDto,
-                                                  @PathVariable Long idRequirement) {
+  @PostMapping("/create-category/{idRequirement}")
+  public ResponseEntity<Mensaje> createCategory(@Valid @RequestBody CategoryRequestDto categoryRequestDto,
+                                                @PathVariable Long idRequirement) {
 
         ResponseEntity<Mensaje> create = categoryService.createCategory(categoryRequestDto, idRequirement);
 
@@ -45,7 +48,7 @@ public class CategoryController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<CategoryResponseDto> updateCategory(@PathVariable Long id,
+    public ResponseEntity<CategoryResponseDto> updateCategory(@Valid @PathVariable Long id,
                                                               @RequestBody CategoryRequestDto categoryRequestDto) {
         ResponseEntity<CategoryResponseDto> update = categoryService.updateCategory(id, categoryRequestDto);
 

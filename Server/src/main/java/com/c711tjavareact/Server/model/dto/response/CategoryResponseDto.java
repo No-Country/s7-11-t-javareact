@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CategoryResponseDto implements Serializable {
     private Long id;
-    @NotBlank(message = "Not Empty")
+    @NotBlank(message = "Name is Empty")
     private String name;
     private List<ProductResponseDto> products = new ArrayList<>();
 }

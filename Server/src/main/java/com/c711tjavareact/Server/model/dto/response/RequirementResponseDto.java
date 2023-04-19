@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RequirementResponseDto implements Serializable {
     private Long id;
-    @NotBlank(message = "Not Empty")
+    @NotBlank(message = "Name is Empty")
     private String name;
     private LocalDateTime updateDate;
     private List<CategoryResponseDto> categoryList = new ArrayList<>();

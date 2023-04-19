@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ProductResponseDto implements Serializable {
     private Long id;
-    @NotBlank(message = "Not Empty")
+    @NotBlank(message = "Name is Empty")
     private String name;
     private float price;
     private int quantity;

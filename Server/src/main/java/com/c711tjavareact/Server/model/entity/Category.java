@@ -22,7 +22,7 @@ public class Category {
     private Long id;
 
     @Column(name = "name", nullable = false)
-    @NotBlank(message = "Not Empty")
+    @NotBlank(message = "name is empty")
     private String name;
 
     @Column(name = "status")

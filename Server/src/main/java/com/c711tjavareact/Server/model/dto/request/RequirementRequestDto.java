@@ -20,7 +20,7 @@ public class RequirementRequestDto implements Serializable {
     @Id
     private Long id;
 
-    @NotBlank(message = "Not Empty")
+    @NotBlank(message = "Name is Empty")
     private String name;
 
     private LocalDateTime updateDate;
