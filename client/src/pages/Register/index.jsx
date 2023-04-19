@@ -5,8 +5,8 @@ import OrangeButton from "../../components/OrangeButton";
 import InputForm from "../../components/InputForm";
 import GoBack from "@/layouts/GoBack";
 
-import mainBg from "@/assets/images/mainBg.png";
-import smallLogo from "@/assets/images/smallLogo.png";
+import mainBg from "@/assets/images/mainBg.webp";
+import smallLogo from "@/assets/images/smallLogo.webp";
 
 import { signUpUser } from "@/api/access";
 
@@ -47,7 +47,7 @@ const Register = () => {
 
   return (
     <div
-      className="grid  min-h-screen bg-center bg-fixed bg-[url('../../assets/images/mainBg.png')] lg:bg-none bg-contain"
+      className="grid  min-h-screen bg-center bg-fixed bg-[url('../../assets/images/mainBg.webp')] lg:bg-none bg-contain"
       style={{
         backgroundImage: `url(${mainBg})`,
       }}

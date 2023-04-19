@@ -1,4 +1,4 @@
-import smallLogo from "@/assets/images/smallLogo.png";
+import smallLogo from "@/assets/images/smallLogo.webp";
 const LoadingSpinner = () => {
   return (
     <div className="flex items-center justify-center h-screen">

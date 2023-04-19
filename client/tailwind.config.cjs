@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'bg-main-image': "url('./src/assets/images/mainBg.png')",
+        'bg-main-image': "url('./src/assets/images/mainBg.webp')",
       },
       fontFamily: {
         'merriweather': ['Merriweather', 'serif'],

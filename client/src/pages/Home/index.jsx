@@ -42,7 +42,7 @@ const Home = () => {
 }     
       </div>
       <div className="col-span-full flex justify-between items-center h-full mb-6">
-        <div className="flex items-center text-end h-28 w-full bg-contain bg-no-repeat bg-[url('../../assets/images/Cloud.png')]">
+        <div className="flex items-center text-end h-28 w-full bg-contain bg-no-repeat bg-[url('../../assets/images/Cloud.webp')]">
           <h1 className="text-center text-2xl font-bold">Listas recientes</h1>
         </div>
         <Link to="/list">

@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import Carousel from "@/components/Carousel";
 import Login from "../Login";
-import mainBg from "../../assets/images/mainBg.png";
-import Logo from "../../assets/images/Logo.png";
-import Compra from "@/assets/images/Compra.png";
+import mainBg from "../../assets/images/mainBg.webp";
+import Logo from "../../assets/images/Logo.webp";
+import Compra from "@/assets/images/Compra.webp";
 import OrangeButton from "@/components/OrangeButton";
-import Listo from "@/assets/images/Listo.png";
-import compraListo from "@/assets/images/compraListo.png";
+import Listo from "@/assets/images/Listo.webp";
+import compraListo from "@/assets/images/compraListo.webp";
 import angledUnderline from "@/assets/images/angledUnderline.png";
 
 const LandingPage = ({ setIsAuthenticated, isAuthenticated }) => {
@@ -20,7 +20,7 @@ const LandingPage = ({ setIsAuthenticated, isAuthenticated }) => {
   };
 
   return (
-    <div className="z-0 flex flex-col h-screen lg:h-full w-full lg:bg-contain bg-[url('../../assets/images/mainBg.png')]">
+    <div className="z-0 flex flex-col h-screen lg:h-full w-full lg:bg-contain bg-[url('../../assets/images/mainBg.webp')]">
       <div className="lg:gap-0 lg:grid lg:grid-cols-2 h-full bg-white bg-opacity-80  lg:pl-6">
         <div className="flex flex-col lg:flex-row lg:self-start lg:h-full items-center text-center">
           {/*  div 1 */}
