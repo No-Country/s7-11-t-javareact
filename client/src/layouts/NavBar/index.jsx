@@ -10,6 +10,8 @@ import {
   FaRegEnvelopeOpen,
   MdCategory,
 } from "react-icons/all";
+import { IoMdExit, BiUserCircle } from "react-icons/all";
+import { decodeToken } from "@/api/auth";
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,24 +47,24 @@ function NavBar() {
               <div className="flex space-x-4">
                 <ul className="flex w-full">
                   <Link to="/home">
-                    <li className="flex items-center mr-3 p-3 border-b-2 border-transparent hover:border-violet-700 text-slate-900 text-body font-body transition-all duration-300">
-                      <IoIosList className="mr-4 text-lg text-violet-700 hover:text-green-500" />
+                    <li className="flex items-center mr-3 p-3 border-b-2 border-transparent hover:border-violet-700 group text-slate-900 text-body font-body transition-all duration-300">
+                      <IoIosList className="mr-4 text-lg text-violet-700 group-hover:text-green-500 transition" />
                       Mis listas
                     </li>
                   </Link>
-                  <Link to="/">
-                    <li className="flex items-center mr-3 p-3 border-b-2 border-transparent hover:border-violet-700 text-slate-900 text-body font-body transition-all duration-300">
-                      <TiInfoLargeOutline className="mr-4 text-lg text-violet-700 hover:text-green-500" />
+                  <Link>
+                    <li className="flex items-center mr-3 p-3 border-b-2 border-transparent hover:border-violet-700 group text-slate-900 text-body font-body transition-all duration-300">
+                      <BiUserCircle className="mr-4 text-lg text-violet-700 group-hover:text-green-500 transition" />
                       <span className="border-b-2 border-transparent hover:border-gradient-violet-green">
-                        About
+                        {decodeToken()?.sub}
                       </span>
                     </li>
                   </Link>
                   <Link to="/">
-                    <li className="flex items-center mr-3 p-3 border-b-2 border-transparent hover:border-violet-700 text-slate-900 text-body font-body transition-all duration-300">
-                      <FaRegEnvelope className="mr-4 text-lg text-violet-700 hover:text-green-500" />
+                    <li className="flex items-center mr-3 p-3 border-b-2 border-transparent hover:border-violet-700 group text-slate-900 text-body font-body transition-all duration-300">
+                      <IoMdExit className="mr-4 text-lg text-violet-700 group-hover:text-green-500 transition" />
                       <span className="border-b-2 border-transparent hover:border-gradient-violet-green">
-                        Contact
+                        Salir
                       </span>
                     </li>
                   </Link>
