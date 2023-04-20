@@ -90,6 +90,7 @@ const BigBuyTab = () => {
   };
 
   const addProductHandler = (product) => {
+    console.log(product);
     if (productsList.find((p) => p.id === product.id)) {
       setProductsList(
         productsList.map((p) =>
@@ -127,6 +128,7 @@ const BigBuyTab = () => {
   const controlGenerateList = () => {
     // const list = generatedList(products);
     console.log(productsList);
+    localStorage.setItem("compraLista", JSON.stringify(productsList));
     // aquí se puede enviar la lista a un servidor o mostrarla en una ventana emergente.
     navigate("/list/2");
   };
@@ -154,7 +156,6 @@ const BigBuyTab = () => {
                 className="bg-secondary-500 transition hover:bg-secondary-600
                        rounded-full px-2 aspect-square grid place-items-center text-3xl text-white"
                 title="add category"
-                onClick={() => removeProductHandler(product)}
               >
                 <MdAdd />
               </button>

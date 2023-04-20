@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   header: {
+    paddingHorizontal: "15%",
     display: "flex",
     flexDirection: "row",
     flexWrap: "nowrap",
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
 });
 
 // Create Document Component
-const MyDocument = ({ listName, products = [] }) => (
+const MyDocument = ({ listName = "", products = [] }) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={styles.header} fixed>
@@ -75,7 +76,7 @@ const MyDocument = ({ listName, products = [] }) => (
         </View>
         <View style={styles.dataContainer}>
           <Text style={{ fontSize: "15px", fontWeight: "bold" }}>
-            Lista de compras - {listName}
+            Lista de compras
           </Text>
           <View
             style={{
@@ -102,8 +103,8 @@ const MyDocument = ({ listName, products = [] }) => (
       </View>
 
       <View style={styles.listContainer}>
-        {products.map((product) => (
-          <View style={styles.listItem}>
+        {products.map((product, i) => (
+          <View style={styles.listItem} key={i}>
             <Text style={{ fontSize: "15px" }}>
               {product.name} -{" "}
               <Text
