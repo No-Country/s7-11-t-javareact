@@ -1,4 +1,4 @@
-import smallLogo from "@/assets/images/smallLogo.png";
+import smallLogo from "@/assets/images/smallLogo.webp";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {

@@ -19,30 +19,30 @@ const Carousel = () => {
 
   const categoryDetails = [
     {
-      img: "https://i.postimg.cc/85g3qbZy/Image-generated-1681709144-2.png",
+      img: "https://i.postimg.cc/Gm5q470B/Image-generated-1681709144-2.webp",
       category: "Ordena tus compras en un solo lugar",
       categoryDescription: "Agrega listas y ordena tus compras rápido y fácil",
     },
     {
-      img: "https://i.postimg.cc/XJMXGX8Z/Image-generated-1681709252-3.png",
+      img: "https://i.postimg.cc/N0N9sVZV/Image-generated-1681709252-3.webp",
       category: "Agrega tus compas del hogar",
       categoryDescription:
         "Compras grandes o rápidas, guardalas en un solo lugar",
     },
     {
-      img: "https://i.postimg.cc/xTsvkybc/Image-generated-1681709455-2.png",
+      img: "https://i.postimg.cc/2j0vjqNy/Image-generated-1681709455-2.webp",
       category: "Edita, crea y elimina tus compras",
       categoryDescription:
         "Actualiza tus lista cuantas veces desees en cualquier lugar",
     },
     {
-      img: "https://i.postimg.cc/dQGvt4pj/Image-generated-1681709598-3.png",
+      img: "https://i.postimg.cc/63j3Kv4N/Image-generated-1681709598-3.webp",
       category: "Controla tu presupuesto de tus compras",
       categoryDescription:
         "¡Cuentas claras y rápidas para tus presupuestos en una sola app!",
     },
     {
-      img: "https://i.postimg.cc/W1kwQqhz/Image-generated-1681709731-3.png",
+      img: "https://i.postimg.cc/g07QPccT/Image-generated-1681709731-3.webp",
       category: "Comparte la lista de tus compras",
       categoryDescription:
         "Con las personas que desees, fácil y rápido. ¡Todo en uno!",

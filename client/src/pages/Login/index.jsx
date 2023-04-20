@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import OrangeButton from "@/components/OrangeButton";
 import InputForm from "@/components/InputForm";
-import angledUnderline from "@/assets/images/angledUnderline.png";
+import angledUnderline from "@/assets/images/angledUnderline.webp";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { signInUser } from "@/api/access";
 import { useState } from "react";
@@ -30,7 +30,7 @@ const Login = ({ setIsAuthenticated, isAuthenticated }) => {
   };
 
   return (
-    <main className="bg-[url('../../assets/images/mainBg.png')] lg:bg-none bg-cover lg:pt-[3%]">
+    <main className="bg-[url('../../assets/images/mainBg.webp')] lg:bg-none bg-cover lg:pt-[3%]">
       <div className="grid justify-items-center items-center h-screen lg:h-full  bg-white bg-opacity-80 lg:bg-transparent p-4 lg:p-0">
         <div className="grid justify-items-center w-full lg:max-w-md max-w-sm px-[4%] min-w-[321px]:px-[7%] py-7 rounded-lg shadow-lg border border-gray-200 bg-white bg-opacity-90">
           <h1 className="text-2xl font-bold mb-4 text-center">
