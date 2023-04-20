@@ -36,7 +36,7 @@ const Carousel = () => {
         "Actualiza tus lista cuantas veces desees en cualquier lugar",
     },
     {
-      img: "https://i.postimg.cc/63j3Kv4N/Image-generated-1681709598-3.webp",
+      img: "https://i.postimg.cc/dV0DKkT9/Image-generated-1681966449-3.webp",
       category: "Controla tu presupuesto de tus compras",
       categoryDescription:
         "¡Cuentas claras y rápidas para tus presupuestos en una sola app!",
