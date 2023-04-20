@@ -261,7 +261,7 @@ function ExpressTab() {
           <BiPlusCircle
             className={`${
               formState === true ? "hidden" : "block"
-            } text-5xl lg:text-3xl text-primary h-20`}
+            } text-5xl lg:text-3xl text-primary h-20 cursor-pointer`}
           />
         </div>
         <div
@@ -269,16 +269,18 @@ function ExpressTab() {
             formState === true ? "block" : "hidden"
           } flex flex-col justify-center items-center gap-3 px-2 w-full h-20`}
         >
-          <NewProductForm addProduct={addProductClick} />
-          <div className="px-6">
-            <button
-              className="absolute top-0 right-1 px-3 py-1 text-xl text-gray-500"
-              onClick={() => {
-                setFormState(false);
-              }}
-            >
+          <div className='flex justify-center items-center content-center'>
+            <NewProductForm addProduct={addProductClick} />
+            <div className="px-6 ">
+              <button
+                className="mb-11 px-2 py-1 text-sm text-white bg-red-500 rounded-lg hover:bg-red-400"
+                onClick={() => {
+                  setFormState(false);
+                 }}
+                >
               X
             </button>
+          </div>
           </div>
         </div>
       </div>
