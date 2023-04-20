@@ -214,7 +214,7 @@ function ExpressTab() {
           <BiPlusCircle
             className={`${
               formState === true ? "hidden" : "block"
-            } text-5xl text-primary h-20 cursor-pointer`}
+            } text-5xl lg:text-3xl text-primary h-20 cursor-pointer`}
           />
         </div>
         <div
