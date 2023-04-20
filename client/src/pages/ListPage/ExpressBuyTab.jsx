@@ -26,7 +26,31 @@ function ExpressTab() {
   });
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [formState, setFormState] = useState(false);
-
+  const [nameList, setNameList] = useState([
+    {
+      id: 1,
+      name: "deseos",
+      data: [
+        { id: 1, name: "Leche", checked: false, editing: false, quantity:4 },
+        { id: 2, name: "Pan", checked: false, editing: false,quantity:3 },
+        { id: 3, name: "Huevos", checked: false, editing: false,quantity:1 },
+        { id: 4, name: "Apples", checked: false, editing: false, quantity:2 },
+      ],
+    },
+    {
+      id: 2,
+      name: "compras",
+      data: [
+        { id: 1, name: "Leche", checked: false, editing: false, quantity:2  },
+        { id: 2, name: "Pan", checked: false, editing: false, quantity:2  },
+        { id: 3, name: "Huevos", checked: false, editing: false,quantity:2  },
+        { id: 4, name: "Apples", checked: false, editing: false,quantity:2  },
+      ],
+    },
+  ]);
+  const [newListName, setNewListName] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  console.log(nameList);
   useEffect(() => {
     localStorage.setItem("dailyProducts", JSON.stringify(dailyProducts));
   }, [dailyProducts]);
@@ -112,39 +136,66 @@ function ExpressTab() {
     localStorage.setItem("selectItemState", JSON.stringify(updatedQuantitys));
   };
 
+  const handleListNameChange = (event) => {
+    setNewListName(event);
+  };
+
+  const addNewListHome = () => {
+    if (newListName.trim() !== "") {
+      const newId = nameList.length + 1;
+      const newList = {
+        id: newId,
+        name: newListName,
+        data: stateSelectItem,
+      };
+      setNameList([...nameList, newList]);
+      localStorage.setItem("nameList", JSON.stringify([...nameList, newList]));
+      setNewListName("");
+      setStateSelectItem([]);
+      localStorage.removeItem("selectItemState");
+      setErrorMessage("");
+    } else {
+      setErrorMessage("Ingrese un nombre para su lista");
+    }
+  };
+
   return (
     <section className="flex flex-col gap-5 justify-between lg:px-6">
+      <div className="w-full h-10 flex flex-col items-center justify-center shadow-md rounded-md p-1">
+        <input
+          autoFocus="autofocus"
+          type="text"
+          placeholder="Inserte nombre de la lista"
+          className="border rounded-md p-1"
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              inputRef.current.blur();
+              handleListNameChange(e.target.value);
+            }
+          }}
+          onChange={(e) => handleListNameChange(e.target.value)}
+          value={newListName}
+          ref={inputRef}
+        />
+        {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+      </div>
       <ul className="h-72 overflow-y-auto">
         {dailyProducts.map((product) => (
           <li
+            onClick={() => addSelectItem(product.id)}
             key={product.id}
-            className={`${
-              product.checked === true ? "bg-slate-500" : "bg-transparent"
-            } flex justify-between items-center w-376 h-46 border-b-2 border-gray-300 p-5 text-lg`}
+            className={`cursor-pointer flex justify-between items-center w-376 h-46 border-b-2 border-gray-300 p-5 text-lg`}
           >
             <div className="flex justify-center items-center ">
-              {product.checked == false ? (
-                <BiPlusCircle
-                  onClick={() => addSelectItem(product.id)}
-                  className={`${
-                    product.checked === true ? "bg-slate-500" : "bg-transparent"
-                  } text-2xl text-primary cursor-pointer`}
-                />
-              ) : (
-                <HiXMark
-                  input
-                  onClick={() => controlProductCheck(product.id, false)}
-                  className={`${
-                    product.checked === true ? "bg-slate-500" : "bg-transparent"
-                  } text-2xl text-red-700 cursor-pointer`}
-                />
-              )}
-
+              <BiPlusCircle
+                className={`text-2xl lg:text-3xl text-primary cursor-pointer`}
+              />
               {product.editing ? (
                 <input
                   autoFocus="autofocus"
                   type="text"
-                  className="ml-2 w-full animate-blink bg-transparent rounded-md focus:outline-none focus:ring focus:ring-transparent"
+                  className="ml-2 lg:text-2xl w-full animate-blink bg-transparent rounded-md focus:outline-none focus:ring focus:ring-transparent"
                   value={product.name}
                   onChange={(e) =>
                     handleEditProduct(
@@ -156,11 +207,7 @@ function ExpressTab() {
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
                       e.preventDefault();
-                      handleEditProduct(
-                        product.id,
-                        e.target.value,
-                        false
-                      );
+                      handleEditProduct(product.id, e.target.value, false);
                       inputRef.current.blur();
                     }
                   }}
@@ -171,7 +218,7 @@ function ExpressTab() {
                   onClick={() => controlProductCheck(product.id, true)}
                   className="w-64 flex gap-5 items-center justify-start "
                 >
-                  <label htmlFor={product.id} className=" ml-2">
+                  <label htmlFor={product.id} className=" ml-2 lg:text-2xl">
                     {product.name}
                   </label>
                 </div>
@@ -184,7 +231,7 @@ function ExpressTab() {
                 }}
                 className={`${
                   product.editing ? "hidden" : "block"
-                } text-2xl text-orange-600 cursor-pointer`}
+                } text-2xl lg:text-3xl text-orange-600 cursor-pointer`}
               />
               <FaRegCheckCircle
                 onClick={() => {
@@ -192,12 +239,12 @@ function ExpressTab() {
                 }}
                 className={`${
                   product.editing === true ? "block" : "hidden"
-                } text-2xl text-green-600 cursor-pointer`}
+                } text-2xl lg:text-3xl text-green-600 cursor-pointer`}
               />
               <FaTrashAlt
                 className={`${
                   product.editing === true ? "block" : "hidden"
-                } text-2xl text-white bg-red-600 cursor-pointer p-2 rounded-lg `}
+                } text-2xl lg:text-3xl text-white bg-red-600 cursor-pointer p-2 rounded-lg `}
                 onClick={() => handleDeleteProduct(product.id)}
               />
             </div>
@@ -239,10 +286,7 @@ function ExpressTab() {
       </div>
       <ul className="w-full h-40 border border-b-2 border-gray-400 rounded-md overflow-x-hidden overflow-y-auto grid grid-cols-[3,1fr,auto] items-stretch gap-2 ">
         {stateSelectItem.map((product) => (
-          <li
-            key={product.id}
-            className="w-full flex justify-end px-2 py-1"
-          >
+          <li key={product.id} className="w-full flex justify-end px-2 py-1">
             <div className="w-72 flex gap-1 justify-start items-center border-r-2 border-black">
               <div className="bg-primary-300 p-2">
                 <MdShoppingCart />
@@ -250,7 +294,7 @@ function ExpressTab() {
               <div>{product.name}</div>
             </div>
             <div className="w-full flex justify-end items-center gap-2 bg-[#ecf6fd]">
-            <div className="flex justify-end items-center">
+              <div className="flex justify-end items-center">
                 {product.editing ? (
                   <input
                     autoFocus="autofocus"
@@ -275,7 +319,7 @@ function ExpressTab() {
                   />
                 ) : (
                   <div className="flex gap-1 items-center justify-end ">
-                    <label htmlFor={product.id} className=" ml-2">
+                    <label htmlFor={product.id} className=" ml-2 ">
                       {product.quantity}
                     </label>
                     <div>x</div>
@@ -288,7 +332,7 @@ function ExpressTab() {
                 }}
                 className={`${
                   product.editing === true ? "block" : "hidden"
-                } text-2xl text-green-600 cursor-pointer`}
+                } text-2xl lg:text-3xl text-green-600 cursor-pointer`}
               />
               <FaEdit
                 onClick={() => {
@@ -296,16 +340,21 @@ function ExpressTab() {
                 }}
                 className={`${
                   product.editing ? "hidden" : "block"
-                } text-2xl text-orange-600 cursor-pointer`}
+                } text-2xl lg:text-3xl text-orange-600 cursor-pointer`}
               />
               <HiXMark
                 onClick={() => removeSelectItem(product.id)}
-                className="text-2xl text-white bg-red-600 cursor-pointer border border-red hover:bg-white hover:text-red-500"
+                className="text-2xl lg:text-3xl text-white bg-red-600 cursor-pointer border border-red hover:bg-white hover:text-red-500"
               />
             </div>
           </li>
         ))}
       </ul>
+      <div className="w-full h-7 flex justify-center items-center p-1 bg-orange-400 text-white text-lg">
+        <button className="w-full" onClick={() => addNewListHome()}>
+          Generar lista
+        </button>
+      </div>
     </section>
   );
 }
