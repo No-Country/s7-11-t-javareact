@@ -31,20 +31,20 @@ function ExpressTab() {
       id: 1,
       name: "deseos",
       data: [
-        { id: 1, name: "Leche", checked: false, editing: false, quantity:4 },
-        { id: 2, name: "Pan", checked: false, editing: false,quantity:3 },
-        { id: 3, name: "Huevos", checked: false, editing: false,quantity:1 },
-        { id: 4, name: "Apples", checked: false, editing: false, quantity:2 },
+        { id: 1, name: "Leche", checked: false, editing: false, quantity: 4 },
+        { id: 2, name: "Pan", checked: false, editing: false, quantity: 3 },
+        { id: 3, name: "Huevos", checked: false, editing: false, quantity: 1 },
+        { id: 4, name: "Apples", checked: false, editing: false, quantity: 2 },
       ],
     },
     {
       id: 2,
       name: "compras",
       data: [
-        { id: 1, name: "Leche", checked: false, editing: false, quantity:2  },
-        { id: 2, name: "Pan", checked: false, editing: false, quantity:2  },
-        { id: 3, name: "Huevos", checked: false, editing: false,quantity:2  },
-        { id: 4, name: "Apples", checked: false, editing: false,quantity:2  },
+        { id: 1, name: "Leche", checked: false, editing: false, quantity: 2 },
+        { id: 2, name: "Pan", checked: false, editing: false, quantity: 2 },
+        { id: 3, name: "Huevos", checked: false, editing: false, quantity: 2 },
+        { id: 4, name: "Apples", checked: false, editing: false, quantity: 2 },
       ],
     },
   ]);
@@ -183,19 +183,19 @@ function ExpressTab() {
       <ul className="h-72 overflow-y-auto">
         {dailyProducts.map((product) => (
           <li
-            onClick={() => addSelectItem(product.id)}
             key={product.id}
             className={`cursor-pointer flex justify-between items-center w-376 h-46 border-b-2 border-gray-300 p-5 text-lg`}
           >
-            <div className="flex justify-center items-center ">
+            <div className="flex justify-start items-center ">
               <BiPlusCircle
+                onClick={() => addSelectItem(product.id)}
                 className={`text-2xl lg:text-3xl text-primary cursor-pointer`}
               />
               {product.editing ? (
                 <input
                   autoFocus="autofocus"
                   type="text"
-                  className="ml-2 lg:text-2xl w-full animate-blink bg-transparent rounded-md focus:outline-none focus:ring focus:ring-transparent"
+                  className="ml-2 lg:text-2xl animate-blink bg-transparent rounded-md focus:outline-none focus:ring focus:ring-transparent"
                   value={product.name}
                   onChange={(e) =>
                     handleEditProduct(
@@ -214,10 +214,7 @@ function ExpressTab() {
                   ref={inputRef}
                 />
               ) : (
-                <div
-                  onClick={() => controlProductCheck(product.id, true)}
-                  className="w-64 flex gap-5 items-center justify-start "
-                >
+                <div className="w-64 flex gap-5 items-center justify-start ">
                   <label htmlFor={product.id} className=" ml-2 lg:text-2xl">
                     {product.name}
                   </label>
@@ -269,18 +266,18 @@ function ExpressTab() {
             formState === true ? "block" : "hidden"
           } flex flex-col justify-center items-center gap-3 px-2 w-full h-20`}
         >
-          <div className='flex justify-center items-center content-center'>
+          <div className="flex justify-center items-center content-center">
             <NewProductForm addProduct={addProductClick} />
             <div className="px-6 ">
               <button
                 className="mb-11 px-2 py-1 text-sm text-white bg-red-500 rounded-lg hover:bg-red-400"
                 onClick={() => {
                   setFormState(false);
-                 }}
-                >
-              X
-            </button>
-          </div>
+                }}
+              >
+                X
+              </button>
+            </div>
           </div>
         </div>
       </div>
