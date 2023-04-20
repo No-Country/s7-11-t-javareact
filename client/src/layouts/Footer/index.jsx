@@ -2,7 +2,7 @@ import React from "react";
 import { FaWhatsapp, FaDiscord, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => (
-  <footer className="bg-orange-500  text-white border-2 border-gradient-to-b from-gray-400 to-orange-500 w-full max-[411px]:hidden">
+  <footer className="bg-[#381c09] text-white border-gradient-to-b from-gray-400 to-orange-500 w-full max-[411px]:hidden">
     <div className="flex flex-col justify-items-end lg:flex-row lg:justify-around mx-auto pt-3 lg:py-6 px-2 sm:px-4 md:px-6 lg:px-10">
       <div className="lg:grid lg:grid-cols-3 lg:gap-8">
         <div className="footer-widget hidden lg:block lg:h-full">
@@ -30,7 +30,7 @@ const Footer = () => (
           <p className="mb-4 lg:hidden">
             Nuestro objetivo es brindarte una experiencia de compra fácil,
             rápida y segura.
-            
+
           </p><p className="hidden lg:block mb-4 text-base">
               Una de nuestros principales objetivos es asegurarnos de que
               disfrutes cada paso del proceso de compra para que siempres te sientas
@@ -89,9 +89,9 @@ const Footer = () => (
             <FaLinkedin className="text-white hover:text-gray-300" size={24} />
           </a>
         </div>
-        <div className="border-t border-gray-400 lg:pt-8 lg:mt-8 sm:flex sm:justify-around">
+        <div className="border-t border-gray-400 lg:pt-8 lg:mt-8 sm:flex sm:justify-around lg:justify-start lg:p-0 box-border">
           <div className="hidden lg:block"></div>
-          <p className="text-sm text-gray-400 my-2 lg:mb-2 lg:my-0">
+          <p className="text-sm text-gray-400 my-2 lg:mb-2 lg:my-0 lg:ml-0 ml-10 p-0">
             &copy; 2023 Compra Listo. Todos los derechos reservados.
           </p>
         </div>
