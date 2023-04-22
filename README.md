@@ -4,7 +4,10 @@
 ![Compra Listo Logo](https://i.postimg.cc/0283mvbh/Logo-Compra-Listo.png)
 </div>
 
-<h3>We know that every month you have to make your shopping list 👛 tutilizando🗒️o by mensajes🤳🏻, but today we are going to tell you about a new and excellent alternative😊🦾. Compra Listo offers a new way to create your lists from the web with your 💻 🖱️⌨️ or your 📲, share it with friends and with the 👨‍👩‍👧‍👦. Check out our website🔍.</h3>
+<h3 align="justify">We know that every month you have to make your shopping list 👛 tutilizando🗒️o by mensajes🤳🏻, 
+but today we are going to tell you about a new and excellent alternative😊🦾. 
+Compra Listo offers a new way to create your lists from the web with your 💻 🖱️⌨️ or your 📲, 
+share it with friends and with the 👨‍👩‍👧‍👦. Check out our website🔍.</h3>
 
 <div align="center">
 
@@ -18,7 +21,7 @@
 </div>
 
 <h3 align="center"  ><b>You can check out our webpage here:</b></h3>
-<h3 align="center"><a href="https://compra-listo.vercel.app/" target="_blank" rel="noopener noreferrer"> COMPRA LISTO </a></h3>
+<h3 align="center"><a href="https://compralisto0.vercel.app/" target="_blank" rel="noopener noreferrer"> COMPRA LISTO </a></h3>
 <p  align="center" ><a href="https://www.youtube.com/watch?v=tcsZWiNykFM" target="_blank" rel="noopener noreferrer"> <img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
 <div align="center">
 
@@ -66,13 +69,14 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:3000).
 
 ### 👉🏻 Task List ✅
 
-- Development of Rest Api for Lost and Found pets with Java 17, Spring Boot 3.
+- Development of Rest Api for Lost and Found pets with Java 17, Spring Boot 2.7.
 - Validations with SpringBoot Validation.
 - MySQL Database.
 - Creating filters with Spring JPA Specification.
-- Users validation wiith JWT and Spriong Security.
+- Users validation with JWT and Spring Security.
 - Data Persistence with Hibernate/JPA.
-- Deployed on Railway
+- Documentation with Swagger 2.9.
+- Deployed on Railway.-
 
 ### 👉🏻 Built with 🛠️
 ![Java](https://img.shields.io/badge/Java-orange?style=for-the-badge&logo=Java&logoColor=white)
@@ -100,7 +104,7 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:3000).
 
 ### 👉🏻 Task List ✅
 
-- Development of the view through dynamic components with Javascript and Nextjs 13.
+- Development of the view through dynamic components with Javascript and Next.js 13.
 - Adding React Query to use a hooks for simples queries.
 - Context for manage state of users, styles globals, and cart.
 - Formik, Yup to control and submit form data.
@@ -126,7 +130,7 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:3000).
 ### 👉🏻 Developers
 
 | <img src="https://i.postimg.cc/wBwqL2Vd/Lucero.png" alt="Photo Lucero Gonzalez" width=80>| <img src="https://i.postimg.cc/fR5rDXrg/Ana.png" alt="Photo Ana Juárez" height=90>| <img src="https://i.postimg.cc/bY1fSqN0/Antonio.jpg" alt="Photo Antonio Ayola" height=90>| <img src="https://i.postimg.cc/dV5tgCH6/Carlos.jpg" alt="Photo Carlos Bohorquez Parra" height=90>|
-:-:|:-:|:-:|:-:|
+|:-:|:-:|:-:|:-:|
 | **Lucero Gonzalez**  | **Ana Juárez**  | **Antonio Ayola**  | **Carlos Bohorquez Parra**  |
 | <a href="https://github.com/lucerocamila" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/gonzalezlucerocamila/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/Layeska" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/ana-juarez01/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/Tono2007" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/antonio-ayola/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/carlosBohorquuez20" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/carlos-bohorquez-parra-711b5224b/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
 
@@ -134,7 +138,7 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:3000).
 
 ## ✔ Team Leader
 
-| <img src="https://i.postimg.cc/nVBHJvy1/Miguel.jpg" alt="Photo Miguel Bazzarelli" width=80>|
+| <img src="https://i.postimg.cc/nVBHJvy1/Miguel.jpg" alt="Photo Miguel Bazzarelli" width=80> |
 |:-:|
-| Miguel Bazzarelli |
+| **Miguel Bazzarelli** |
 |<a href="github.com/migbazz"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/miguel-ernesto-bazzarelli-8b5029247/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
