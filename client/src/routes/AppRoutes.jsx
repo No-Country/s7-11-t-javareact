@@ -7,7 +7,7 @@ import LandingPage from "@/pages/LandingPage/LandingPage";
 import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 import Home from "@/pages/Home";
 import ListPage from "@/pages/ListPage";
-import GeneratedListPage from "@/pages/GeneratedList";
+import GeneratedList from "@/pages/GeneratedList";
 import NavBar from "@/layouts/NavBar";
 import GoBack from "@/layouts/GoBack";
 import PublicNav from "@/layouts/PublicNav";
@@ -88,7 +88,7 @@ const AppRoutes = ({ setIsAuthenticated, isAuthenticated }) => {
                 <>
                   <NavBar />
                   <GoBack />
-                  <GeneratedListPage />
+                  <GeneratedList />
                 </>
               }
             />

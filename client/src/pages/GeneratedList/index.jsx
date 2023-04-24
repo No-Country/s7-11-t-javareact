@@ -196,7 +196,7 @@ function GeneratedList() {
             )}
             <hr />
             <p className="text-right text-gray-600">
-              Total $
+              Total de lista $
               {Math.round(
                 productsList.reduce(function (acc, obj) {
                   return acc + obj.price * obj.cuantity;
@@ -208,11 +208,11 @@ function GeneratedList() {
         <footer className="bg-secondary-500/30 backdrop-blur-md fixed bottom-0 left-0 w-full py-3">
           <div className="container flex justify-between items-center">
             <span>
-              Cantidad de productos:{" "}
+              Productos obtenidos:
               <b>{productsList.filter((product) => product.done).length}</b>
             </span>
             <span>
-              Total:{" "}
+              Total actual:
               <b>
                 $
                 {Math.round(
