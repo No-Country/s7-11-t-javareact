@@ -215,12 +215,12 @@ function GeneratedList() {
               Total actual:
               <b>
                 $
-                {Math.round(
-                  productsList.reduce(function (acc, obj) {
-                    return obj.done ? acc + obj.price * obj.cuantity : acc;
-                  }, 0) * 100
-                ) / 100}
-              </b>
+              </b> {Math.round(
+                productsList.reduce(function (acc, obj) {
+                  return acc + obj.price * obj.cuantity;
+                }, 0) * 100
+              ) / 100}
+              
             </span>
           </div>
         </footer>
