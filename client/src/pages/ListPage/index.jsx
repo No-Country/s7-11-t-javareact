@@ -12,7 +12,7 @@ const ListPage = () => {
   };
 
   return (
-    <main className="z-0 lg:bg-contain bg-[url('../../assets/images/mainBg.webp')]">
+    <main className="z-0 h-screen lg:bg-contain bg-[url('../../assets/images/mainBg.webp')]">
       <div className="p-4 lg:px-11 bg-white bg-opacity-80">
         <div role="tablist" aria-label="List types Tabs" className="flex">
           <TabButton
