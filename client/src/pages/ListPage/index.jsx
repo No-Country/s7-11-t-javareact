@@ -1,8 +1,6 @@
 import { useState } from "react";
 import BigBuyTab from "./BigBuyTab";
-import ExpressBuyTab from "./ExpressBuyTab";
-import NavBar from "@/layouts/NavBar";
-import GoBack from "@/layouts/GoBack";
+import ExpressBuyTab from "./ExpressBuyTab";import NavBar from "@/layouts/NavBar";
 
 const EXPRESS_TAB_NAME = "express-buy";
 const BIG_TAB_NAME = "big-buy";
