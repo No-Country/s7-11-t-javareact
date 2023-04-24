@@ -208,19 +208,18 @@ function GeneratedList() {
         <footer className="bg-secondary-500/30 backdrop-blur-md fixed bottom-0 left-0 w-full py-3">
           <div className="container flex justify-between items-center">
             <span>
-              Cantidad de productos:{" "}
+              Cantidad de productos:
               <b>{productsList.filter((product) => product.done).length}</b>
             </span>
             <span>
-              Total:{" "}
-              <b>
+              Total:<b>
                 $
-                {Math.round(
-                  productsList.reduce(function (acc, obj) {
-                    return obj.done ? acc + obj.price * obj.cuantity : acc;
-                  }, 0) * 100
-                ) / 100}
-              </b>
+              </b> {Math.round(
+                productsList.reduce(function (acc, obj) {
+                  return acc + obj.price * obj.cuantity;
+                }, 0) * 100
+              ) / 100}
+              
             </span>
           </div>
         </footer>
