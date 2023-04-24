@@ -1,10 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-
-import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import LandingPage from "@/pages/LandingPage/LandingPage";
-import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 import Home from "@/pages/Home";
 import ListPage from "@/pages/ListPage";
 import GeneratedList from "@/pages/GeneratedList";
@@ -13,6 +10,7 @@ import GoBack from "@/layouts/GoBack";
 import PublicNav from "@/layouts/PublicNav";
 import Footer from "@/layouts/Footer";
 import LoadingSpinner from "@/components/LoadingSpinner";
+import Login from "@/pages/Login";
 
 const AppRoutes = ({ setIsAuthenticated, isAuthenticated }) => {
   const [isLoading, setIsLoading] = useState(true);
