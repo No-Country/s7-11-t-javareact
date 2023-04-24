@@ -29,7 +29,7 @@ function ExpressTab() {
   const [nameList, setNameList] = useState([
     {
       id: 1,
-      name: "deseos",
+      name: "Lista de hoy",
       data: [
         { id: 1, name: "Leche", checked: false, editing: false, quantity: 4 },
         { id: 2, name: "Pan", checked: false, editing: false, quantity: 3 },
