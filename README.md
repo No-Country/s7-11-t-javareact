@@ -104,15 +104,15 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:3000).
 
 ### 👉🏻 Task List ✅
 
-- Development of the view through dynamic components with Javascript and Next.js 13.
-- Adding React Query to use a hooks for simples queries.
-- Context for manage state of users, styles globals, and cart.
-- Formik, Yup to control and submit form data.
-- Styling components with Styled-Components library.
-- Obtaining and uploading images of pets with Cloudinary.
-- Swiper to simplify develop carousels.
-- Visual and attractive animations added with Framer Motion.
-- Deployed on Vercel.
+- Libraries: Our app is built using React for UI components, Tailwind CSS for styling, and React-hook-form for form handling.
+- CLI: We're using Vite as our build tool to speed up development time.
+- Language: Our entire stack is built on JavaScript, which is a popular and versatile language.
+- Router: React Router Dom is used for client-side routing.
+- API Calls: Axios is our HTTP client for making API requests.
+- Code Formatting: We use Prettier to ensure consistent code style.
+- Animations: We're using CSS to create engaging animations throughout the app.
+- Deployment: We're deploying our app on Vercel, which makes it easy to deploy and scale our app with just a few clicks. 
+
 
 ### 👉🏻 Built with 🛠️
 
