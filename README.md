@@ -22,7 +22,7 @@ share it with friends and with the 👨‍👩‍👧‍👦. Check out our webs
 
 <h3 align="center"  ><b>You can check out our webpage here:</b></h3>
 <h3 align="center"><a href="https://compralisto0.vercel.app/" target="_blank" rel="noopener noreferrer"> COMPRA LISTO </a></h3>
-<p  align="center" ><a href="https://www.youtube.com/watch?v=tcsZWiNykFM" target="_blank" rel="noopener noreferrer"> <img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
+<p  align="center" ><a href="https://dms.licdn.com/playlist/D4D05AQFVVIOAJ_We2g/mp4-720p-30fp-crf28/0/1682731487614?e=1683342000&v=beta&t=SCShbtkCGafI_J9qargJhg82z_dtOkrgfE4WrIqgb60" target="_blank" rel="noopener noreferrer"> <img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
 <div align="center">
 
 <img src=https://i.postimg.cc/NFbdby5S/Logo-Listo.png alt="Logo Compra Listo" width=100>
